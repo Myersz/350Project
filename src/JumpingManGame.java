@@ -8,7 +8,7 @@ public class JumpingManGame {
 
 		GamePanel panel = new GamePanel();
 		frame.getContentPane().add(panel);
-		frame.setSize(600, 700);
+		frame.setSize(550, 300);
 		frame.setVisible(true);
 		frame.setResizable(false);
 	}
