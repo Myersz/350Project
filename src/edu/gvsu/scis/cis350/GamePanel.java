@@ -43,15 +43,24 @@ public class GamePanel extends JPanel {
 	
 	/**
 	 * Default constructor for GamePanel.
-	 * */
-	public GamePanel() {
+	 * @throws MissingBackgroundException if background images failed to load. 
+	 */
+	public GamePanel() throws MissingBackgroundException {
 		
 		gameDisplay.setPreferredSize(
 				new Dimension(DISPLAY_WIDTH, DISPLAY_HEIGHT));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		// Configure initial background for game
-		background = new GameBackground();
+		try {
+			background = new GameBackground();
+		} catch (MissingBackgroundException e) {
+			System.out.println("ERROR: Game cannot start without background "
+					+ "images. Check that Graphics/Backrounds/ folder has at "
+					+ "least one .png file within it.");
+			throw new MissingBackgroundException();
+		}
+		
 		bg = new JLabel();
 		bg.setIcon(background.getCurrentBackground());
 		gameDisplay.add(bg);
