@@ -13,14 +13,15 @@ import javax.imageio.ImageIO;
  */
 public class GameBackground {
 	
-	/** Coordinate for location of image*/
+	/** x coordinate for location of image. */
 	private int x;
+	/** y coordinate for location of image. */
 	private int y;
 	
-	/** Set initial speed of scroll to 5*/
+	/** Set initial speed of scroll to 5. */
 	private int speed = 5;
 	
-	/** Contains Background Image*/
+	/** Contains Background Image. */
 	private BufferedImage image;
 
 	/**
@@ -28,34 +29,37 @@ public class GameBackground {
 	 * Sets coordinates for x and y to 0
 	 */
 	public GameBackground() {
-		this(0,0);
+		this(0, 0);
 	}
 	
 	/**
 	 * Constructor for GameBackground class.
-	 * Loads background image and accepts coordinate for placement of background.
-	 * @param x coordinate for image placement
-	 * @param y coordinate for image placement
+	 * Loads background image and accepts coordinate for 
+	 * placement of background.
+	 * @param xCoordinate coordinate for image placement
+	 * @param yCoordinate coordinate for image placement
 	 */
-	public GameBackground(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public GameBackground(final int xCoordinate, final int yCoordinate) {
+		this.x = xCoordinate;
+		this.y = yCoordinate;
 		
 		//Retrieve background image from file
-		try{
-			image = ImageIO.read(new File("Graphics/Backgrounds/citybackground.png"));
+		try {
+			image = ImageIO.read(new File(
+					"Graphics/Backgrounds/citybackground.png"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 	
 	/**
-	 * Re-Draw background shifted over
+	 * Re-Draw background shifted over.
 	 * @param window - window graphics will be drawn on
 	 */
-	public void draw(Graphics window) {
+	public final void draw(final Graphics window) {
         // Draw the image onto the Graphics reference
-        window.drawImage(image, getX(), getY(), image.getWidth(), image.getHeight(), null);
+        window.drawImage(image, getX(), getY(), image.getWidth(), 
+        		image.getHeight(), null);
  
 		// Move the x position left for next time
         this.x -= speed;
@@ -70,50 +74,50 @@ public class GameBackground {
 	}
 	
 	/**
-	 * Set x coordinate
-	 * @param x coordinate x is to be set to
+	 * Set x coordinate.
+	 * @param xCoordinate coordinate x is to be set to
 	 */
-	public void setX(int x){
-		this.x = x;
+	public final void setX(final int xCoordinate) {
+		this.x = xCoordinate;
 	}
 	
 	/**
-	 * Get x coordinate
+	 * Get x coordinate.
 	 * @return x coordinate
 	 */
-	public int getX(){
+	public final int getX() {
 		return this.x;
 	}
 	
 	/**
-	 * Get y coordinate
+	 * Get y coordinate.
 	 * @return y coordinate
 	 */
-	public int getY(){
+	public final int getY() {
 		return this.y;
 	}
 	
 	/**
-	 * Get Background Image width
+	 * Get Background Image width.
 	 * @return integer value of width of image
 	 */
-	public int getImageWidth() {
+	public final int getImageWidth() {
 		return image.getWidth();
 	}
 	
 	/**
-	 * Get Speed of scrolling
+	 * Get Speed of scrolling.
 	 * @return integer value for speed of scrolling
 	 */
-	public int getSpeed(){
+	public final int getSpeed() {
 		return this.speed;
 	}
 	
 	/**
-	 * Set Speed of scrolling
-	 * @param speed - new speed for scrolling
+	 * Set Speed of scrolling.
+	 * @param pSpeed - new speed for scrolling
 	 */
-	public void setSpeed(int speed){
-		this.speed = speed;
+	public final void setSpeed(final int pSpeed) {
+		this.speed = pSpeed;
 	}
 }

@@ -34,7 +34,7 @@ public class ScrollingBackground extends Canvas implements Runnable{
 		
 		//Start imaged not scrolling
 		/** Detect enter key pushed to change this */
-		scrolling = false;
+		scrolling = true;
 		
 		new Thread(this).start();
 		setVisible(true);
