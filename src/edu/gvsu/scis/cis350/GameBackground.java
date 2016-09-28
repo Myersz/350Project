@@ -1,117 +1,123 @@
 package edu.gvsu.scis.cis350;
 import java.io.File;
-import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 /**
  * Manages background of game.
+ * Controls the speed with which the image moves across the screen
  * 
- * Note that background images should be named in such a way 
- * that they will be ordered numerically in the file system,
- * i.e, "background1, background2" or "1_trees, "2_moretrees"
- * 
- * @author Kelsey
+ * @author Ella
  *
  */
 public class GameBackground {
 	
-	/** An array containing all the possible backgrounds for the game. */
-	private ArrayList<ImageIcon> backgrounds;
-	/** The current background being displayed in the game. */
-	private ImageIcon currentBackground;
-	/** Boolean to indiciate if background is being animated. */
-	private boolean isAnimated = false;
+	/** x coordinate for location of image. */
+	private int x;
+	/** y coordinate for location of image. */
+	private int y;
 	
+	/** Set initial speed of scroll to 5. */
+	private int speed = 5;
+	
+	/** Contains Background Image. */
+	private BufferedImage image;
+
 	/**
-	 * Constructor for GameBackground class. Loads all the images in the 
-	 * Backgrounds folder into the ArrayList.
+	 * Constructor for GameBackground class. 
+	 * Sets coordinates for x and y to 0
 	 */
 	public GameBackground() {
-		backgrounds = new ArrayList<ImageIcon>();
-		final File folder = new File("Graphics/Backgrounds/");
-		for (final File image : folder.listFiles()) {
-			backgrounds.add(new ImageIcon(image.getPath()));	
-			System.out.println(image.getPath());
-		}
+		this(0, 0);
+	}
+	
+	/**
+	 * Constructor for GameBackground class.
+	 * Loads background image and accepts coordinate for 
+	 * placement of background.
+	 * @param xCoordinate coordinate for image placement
+	 * @param yCoordinate coordinate for image placement
+	 */
+	public GameBackground(final int xCoordinate, final int yCoordinate) {
+		this.x = xCoordinate;
+		this.y = yCoordinate;
 		
-		//System.out.println(backgrounds.size());
-		
-		if (backgrounds.size() > 0) {
-			currentBackground = backgrounds.get(0);
-		} else {
-			currentBackground = null;
+		//Retrieve background image from file
+		try {
+			image = ImageIO.read(new File(
+					"Graphics/Backgrounds/citybackground.png"));
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 	
 	/**
-	 * Returns the position in the array of the background.
-	 * @param image The image we want to know the index of
-	 * @return The index of that image in the ArrayList
+	 * Re-Draw background shifted over.
+	 * @param window - window graphics will be drawn on
 	 */
-	public final int currentBgPos(final ImageIcon image) {
-		return backgrounds.indexOf(image);
+	public final void draw(final Graphics window) {
+        // Draw the image onto the Graphics reference
+        window.drawImage(image, getX(), getY(), image.getWidth(), 
+        		image.getHeight(), null);
+ 
+		// Move the x position left for next time
+        this.x -= speed;
+ 
+        // Check to see if the image has gone off stage left
+        if (this.x <= -1 * image.getWidth()) {
+ 
+            // If it has, line it back up so that its left edge is
+            // lined up to the right side of the other background image
+            this.x = this.x + image.getWidth() * 2;
+        }
 	}
 	
 	/**
-	 * Returns the current background.
-	 * @return the background that is currently displayed
+	 * Set x coordinate.
+	 * @param xCoordinate coordinate x is to be set to
 	 */
-	public final ImageIcon getCurrentBackground() {
-		return currentBackground;
+	public final void setX(final int xCoordinate) {
+		this.x = xCoordinate;
 	}
 	
 	/**
-	 * Returns the ArrayList of background ImageIcons.
-	 * @return the ArrayList of ImageIcons
+	 * Get x coordinate.
+	 * @return x coordinate
 	 */
-	public final ArrayList<ImageIcon> getBackgrounds() {
-		return backgrounds;
+	public final int getX() {
+		return this.x;
 	}
 	
 	/**
-	 * Returns the next background to be displayed in the game.
-	 * @param currentBg The position in the ArrayList of the current background.
-	 * @return The next background in the ArrayList, or the first background 
-	 * if the current background is the last in the ArrayList.
+	 * Get y coordinate.
+	 * @return y coordinate
 	 */
-	private ImageIcon getNextBackground(final int currentBg) {
-		if (currentBg == backgrounds.size() - 1) {
-			return backgrounds.get(0);
-		} else {
-			return backgrounds.get(currentBg + 1);
-		}
+	public final int getY() {
+		return this.y;
 	}
 	
 	/**
-	 * Sets the background to the next background in the ArrayList.
+	 * Get Background Image width.
+	 * @return integer value of width of image
 	 */
-	public final void setBackground() {
-		this.currentBackground = this.getNextBackground(
-				this.currentBgPos(currentBackground));
+	public final int getImageWidth() {
+		return image.getWidth();
 	}
 	
 	/**
-	 * Sets the current background to the given image.
-	 * @param image The new background image.
+	 * Get Speed of scrolling.
+	 * @return integer value for speed of scrolling
 	 */
-	public final void setBackground(final ImageIcon image) {
-		this.currentBackground = image;
+	public final int getSpeed() {
+		return this.speed;
 	}
 	
 	/**
-	 * Returns true if background is animated and false otherwise.
-	 * @return whether or not the background is animated.
+	 * Set Speed of scrolling.
+	 * @param pSpeed - new speed for scrolling
 	 */
-	public final boolean isAnimated() {
-		return isAnimated;
-	}
-	
-	/**
-	 * Sets the state of the isAnimated boolean variable.
-	 * @param newVal The new state of the boolean variable
-	 */
-	public final void setIsAnimated(final boolean newVal) {
-		isAnimated = newVal;
+	public final void setSpeed(final int pSpeed) {
+		this.speed = pSpeed;
 	}
 }

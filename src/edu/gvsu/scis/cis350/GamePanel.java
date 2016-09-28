@@ -35,25 +35,34 @@ public class GamePanel extends JPanel {
 	
 	
 	/** Width for display. */
-	static final int DISPLAY_WIDTH = 550;
+	static final int DISPLAY_WIDTH = 900;
 	/** Height for display. */
-	static final int DISPLAY_HEIGHT = 300;
+	static final int DISPLAY_HEIGHT = 768;
 	/** Frequency of background changes. */
 	static final int ANIMATION_FREQ = 500; // 0.5 seconds
 	
 	/**
 	 * Default constructor for GamePanel.
-	 * */
-	public GamePanel() {
+	 * @throws MissingBackgroundException if background images failed to load. 
+	 */
+	public GamePanel() throws MissingBackgroundException {
 		
 		gameDisplay.setPreferredSize(
 				new Dimension(DISPLAY_WIDTH, DISPLAY_HEIGHT));
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		// Configure initial background for game
-		background = new GameBackground();
+//		try {
+//			background = new GameBackground();
+//		} catch (MissingBackgroundException e) {
+//			System.out.println("ERROR: Game cannot start without background "
+//					+ "images. Check that Graphics/Backrounds/ folder has at "
+//					+ "least one .png file within it.");
+//			throw new MissingBackgroundException();
+//		}
+		
 		bg = new JLabel();
-		bg.setIcon(background.getCurrentBackground());
+		//bg.setIcon(background.getCurrentBackground());
 		gameDisplay.add(bg);
 		
 		startButton = new JButton("Start");
@@ -74,13 +83,13 @@ public class GamePanel extends JPanel {
 	 * @author Kelsey
 	 *
 	 */
-	private class TimerListener implements ActionListener {
-		@Override
-		public void actionPerformed(final ActionEvent e) {
-			background.setBackground();
-			bg.setIcon(background.getCurrentBackground());
-		}
-	}
+//	private class TimerListener implements ActionListener {
+//		@Override
+//		public void actionPerformed(final ActionEvent e) {
+//			background.setBackground();
+//			bg.setIcon(background.getCurrentBackground());
+//		}
+//	}
 	
 	/**
 	 * Button listener to begin animation of background.
@@ -92,34 +101,34 @@ public class GamePanel extends JPanel {
 		public void actionPerformed(final ActionEvent e) {
 			if (e.getSource() == startButton) {
 				// Only begin animation if it is not already being animated.
-				if (!background.isAnimated()) {
-					this.animateBackground();
-				}
+//				if (!background.isAnimated()) {
+//					this.animateBackground();
+//				}
 			}
 			
-			if (e.getSource() == stopButton) {
-				if (background.isAnimated()) {
-					this.endAnimation();
-				}
-			}
+//			if (e.getSource() == stopButton) {
+//				if (background.isAnimated()) {
+//					this.endAnimation();
+//				}
+//			}
 		}
 		
 		/** 
 		 * Instantiates timer and begins animation of background.
 		 */
 		private void animateBackground() {
-			updateScene = new Timer(ANIMATION_FREQ, new TimerListener());
-			updateScene.start();
-			background.setIsAnimated(true);
+//			updateScene = new Timer(ANIMATION_FREQ, new TimerListener());
+//			updateScene.start();
+//			background.setIsAnimated(true);
 
 		}
 		
 		/**
 		 * Stops the background from changing.
 		 */
-		private void endAnimation() {
-			updateScene.stop();
-			background.setIsAnimated(false);
-		}
+//		private void endAnimation() {
+//			updateScene.stop();
+//			background.setIsAnimated(false);
+//		}
 	}
 }
