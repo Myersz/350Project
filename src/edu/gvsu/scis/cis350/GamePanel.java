@@ -35,9 +35,9 @@ public class GamePanel extends JPanel {
 	
 	
 	/** Width for display. */
-	static final int DISPLAY_WIDTH = 550;
+	static final int DISPLAY_WIDTH = 900;
 	/** Height for display. */
-	static final int DISPLAY_HEIGHT = 300;
+	static final int DISPLAY_HEIGHT = 768;
 	/** Frequency of background changes. */
 	static final int ANIMATION_FREQ = 500; // 0.5 seconds
 	
