@@ -90,17 +90,18 @@ public final class JumpingManGame extends JFrame {
 	private class ButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
+			
+			// Show help screen
 			if (e.getSource() == help) {
-				back.setScrolling(false);
+				back.pauseScrolling();
 				String message = "To jump over an obstacle: Press up arrow key";
 				String[] options = {"OK"};
 				int result = JOptionPane.showOptionDialog(null, message, 
 						"Game Help", 0, 1, null, options, options[0]);
 				
-				// This is supposed to turn scrolling back on once the 
-				// window is closed but it's not working
+
 				if (result == 0) {
-					back.setScrolling(true);
+					back.resumeScrolling();
 				}
 			}
 
