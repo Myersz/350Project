@@ -37,7 +37,12 @@ public class ScrollingBackground extends Canvas implements Runnable {
 		backOne = new GameBackground();
 		backTwo = new GameBackground(backOne.getImageWidth(), 0);
 		
+<<<<<<< HEAD
 		//Start with imaged not scrolling
+=======
+		//Start imaged not scrolling
+		/** Detect enter key pushed to change this */
+>>>>>>> origin/ScrollingBackground-Ella
 		scrolling = true;
 		
 		new Thread(this).start();
