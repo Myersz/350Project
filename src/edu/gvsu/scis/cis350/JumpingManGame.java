@@ -53,6 +53,8 @@ public final class JumpingManGame extends JFrame {
 		setJMenuBar(this.createMenuBar());
 
 		back = new ScrollingBackground();
+		
+		//add Keyboard listener to background
 		back.addKeyListener(new keyListener());
 		((Component) back).setFocusable(true);
 		getContentPane().add(back);
@@ -115,6 +117,10 @@ public final class JumpingManGame extends JFrame {
 		}
 	}
 	
+	/**
+	 * Listener class to carry out appropriate task 
+	 * when a menu item is selected.
+	 */
 	private class keyListener implements KeyListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -127,20 +133,13 @@ public final class JumpingManGame extends JFrame {
 				}
 			}
 		}
-
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
-
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
-			
 		}
-		
-	}
-	
-
+	}	
 }
