@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Main method to run the Jumping Man game.
@@ -51,6 +53,7 @@ public final class JumpingManGame extends JFrame {
 		setJMenuBar(this.createMenuBar());
 
 		back = new ScrollingBackground();
+		back.addKeyListener(new keyListener());
 		((Component) back).setFocusable(true);
 		getContentPane().add(back);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -110,6 +113,33 @@ public final class JumpingManGame extends JFrame {
 			}
 
 		}
+	}
+	
+	private class keyListener implements KeyListener {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				System.out.println("Enter has been pressed");
+				if (!back.getScrolling()) {
+					back.resumeScrolling();
+				} else if (back.getScrolling()) {
+					back.pauseScrolling();
+				}
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	
 
