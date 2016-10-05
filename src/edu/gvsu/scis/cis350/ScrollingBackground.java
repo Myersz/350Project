@@ -1,7 +1,6 @@
 package edu.gvsu.scis.cis350;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -11,37 +10,42 @@ import java.awt.image.BufferedImage;
  * 
  * @author Ella
  */
-public class ScrollingBackground extends Canvas implements Runnable{
+public class ScrollingBackground extends Canvas implements Runnable {
 	
-	//Two copies of the background image
+	/**
+	 * Two copies of the background image
+	 */
 	private GameBackground backOne;
 	private GameBackground backTwo;
 	
-	//Holds the buffered image for reasons?? Idk why this is needed, but it definitely is.
+	/**
+	 * Buffered Image Item
+	 */
 	private BufferedImage back;
 	
-	//set the background to move or not
+	/**
+	 * set the background to move or not
+	 */
 	private boolean scrolling;
 	
 	/**
 	 * Constructor for ScrollingBackground Class.
 	 * Loads two background images and starts a thread to move the background
 	 */
-	public ScrollingBackground(){
+	public ScrollingBackground() {
 		//Instantiate both background items
 		backOne = new GameBackground();
 		backTwo = new GameBackground(backOne.getImageWidth(), 0);
 		
-		//Start imaged not scrolling
-		/** Detect enter key pushed to change this */
-		scrolling = false;
+		//Start with imaged not scrolling
+		scrolling = true;
 		
 		new Thread(this).start();
 		setVisible(true);
 	}
 	
 	/**
-	 * makes the image move via magic!!!
+	 * Thread to control the movement of the background.
 	 */
 	@Override
     public void run() {
@@ -55,7 +59,7 @@ public class ScrollingBackground extends Canvas implements Runnable{
     }
  
 	/**
-	 * updates the window
+	 * Update the window.
 	 */
     @Override
     public void update(Graphics window) {
@@ -63,7 +67,7 @@ public class ScrollingBackground extends Canvas implements Runnable{
     }
  
     /**
-     * puts the graphics on the window!!
+     * Puts the graphics on the window.
      */
     public void paint(Graphics window) {
         Graphics2D twoD = (Graphics2D)window;
@@ -84,20 +88,19 @@ public class ScrollingBackground extends Canvas implements Runnable{
     
     
     /**
-     * Get if the screen is currently scrolling
+     * Get if the screen is currently scrolling.
      * @return boolean value of scrolling
      */
-    public boolean getScrolling(){
+    public boolean getScrolling() {
     	return scrolling;
     }
     
     /**
-     * Make the dang thing scroll or not! SET IT!
+     * Set Scroll action.
      * @param scrolling
      */
-    public void setScrolling(Boolean scrolling){
+    public void setScrolling(Boolean scrolling) {
     	this.scrolling = scrolling;
     }
  
 }
-

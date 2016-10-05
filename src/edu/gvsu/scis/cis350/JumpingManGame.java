@@ -34,6 +34,6 @@ public final class JumpingManGame extends JFrame {
 	 * @param args Arguments
 	 */
 	public static void main(final String[] args) {
-		new JumpingManGame();
+		new GamePanel();
 	}
 }
