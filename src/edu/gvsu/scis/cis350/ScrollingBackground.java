@@ -1,7 +1,6 @@
 package edu.gvsu.scis.cis350;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -11,93 +10,128 @@ import java.awt.image.BufferedImage;
  * 
  * @author Ella
  */
-public class ScrollingBackground extends Canvas implements Runnable{
-	
-	//Two copies of the background image
+public class ScrollingBackground extends Canvas implements Runnable {
+
+	private static final long serialVersionUID = 0;
+
+	/** First copy of the background image. */
 	private GameBackground backOne;
+	/** Second copy of the background image. */
 	private GameBackground backTwo;
-	
-	//Holds the buffered image for reasons?? Idk why this is needed, but it definitely is.
+
+	/** Holds the buffered background image. */
 	private BufferedImage back;
-	
-	//set the background to move or not
+
+	/** Set the background to move or not. */
 	private boolean scrolling;
-	
+
+
 	/**
 	 * Constructor for ScrollingBackground Class.
 	 * Loads two background images and starts a thread to move the background
 	 */
-	public ScrollingBackground(){
+	public ScrollingBackground() {
 		//Instantiate both background items
 		backOne = new GameBackground();
 		backTwo = new GameBackground(backOne.getImageWidth(), 0);
-		
+
 		//Start imaged not scrolling
 		/** Detect enter key pushed to change this */
 		scrolling = true;
-		
+
 		new Thread(this).start();
 		setVisible(true);
 	}
-	
+
 	/**
-	 * makes the image move via magic!!!
+	 * Makes the background move.
 	 */
 	@Override
-    public void run() {
-        try {
-            while (this.scrolling) {
-                Thread.currentThread().sleep(10);
-                repaint();
-            }
-        }
-        catch (Exception e) {}
-    }
- 
-	/**
-	 * updates the window
+	public final void run() {
+		System.out.println("Start running");
+		scrollBackground();
+		System.out.println("Done running");
+
+	}
+
+	/** 
+	 * Method to start the background scrolling.
 	 */
-    @Override
-    public void update(Graphics window) {
-        paint(window);
-    }
- 
-    /**
-     * puts the graphics on the window!!
-     */
-    public void paint(Graphics window) {
-        Graphics2D twoD = (Graphics2D)window;
-    
-        if (back == null)
-            back = (BufferedImage)(createImage(getWidth(), getHeight()));
- 
-        // Create a buffer to draw to
-        Graphics buffer = back.createGraphics();
- 
-        // Put the two copies of the background image onto the buffer
-        backOne.draw(buffer);
-        backTwo.draw(buffer);
- 
-        // Draw the image onto the window
-        twoD.drawImage(back, null, 0, 0);
-    }
-    
-    
-    /**
-     * Get if the screen is currently scrolling
-     * @return boolean value of scrolling
-     */
-    public boolean getScrolling(){
-    	return scrolling;
-    }
-    
-    /**
-     * Make the dang thing scroll or not! SET IT!
-     * @param scrolling
-     */
-    public void setScrolling(Boolean scrolling){
-    	this.scrolling = scrolling;
-    }
- 
+	public final void scrollBackground() {
+		System.out.println("Start scrolling");
+		try {
+			while (this.scrolling) {
+				Thread.sleep(10);
+				repaint();
+			}
+		} catch (Exception e) { }
+
+		System.out.println("Done scrolling");
+	}
+
+	/**
+	 * Updates the window.
+	 */
+	@Override
+	public final void update(final Graphics window) {
+		paint(window);
+	}
+
+	/**
+	 * Puts the graphics on the window!!
+	 * @param window The graphics window to be painted.
+	 */
+	public final void paint(final Graphics window) {
+		Graphics2D twoD = (Graphics2D) window;
+
+		if (back == null) {
+			back = (BufferedImage) (createImage(getWidth(), getHeight()));
+		}
+
+		// Create a buffer to draw to
+		Graphics buffer = back.createGraphics();
+
+		// Put the two copies of the background image onto the buffer
+		backOne.draw(buffer);
+		backTwo.draw(buffer);
+
+		// Draw the image onto the window
+		twoD.drawImage(back, null, 0, 0);
+	}
+
+
+	/**
+	 * Get if the screen is currently scrolling.
+	 * @return boolean value of scrolling
+	 */
+	public final boolean getScrolling() {
+		return scrolling;
+	}
+
+	/**
+	 * Make the background scroll.
+	 * @param pScrolling The new value for scrolling.
+	 */
+	public final void setScrolling(final Boolean pScrolling) {
+		this.scrolling = pScrolling;
+	}
+
+	/**
+	 * Pause the thread and tell the background to stop scrolling.
+	 */
+	public final void pauseScrolling() {
+		System.out.println("I'm paused.");
+		this.setScrolling(false);
+	}
+
+	/**
+	 * Resume the thread and tell the background to start scrolling again.
+	 */
+	public final void resumeScrolling() {
+		System.out.println("I've resumed.");
+		this.setScrolling(true);	
+		new Thread(this).start();		
+	}
+
 }
 
