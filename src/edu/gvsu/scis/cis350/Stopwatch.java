@@ -12,42 +12,41 @@ public class Stopwatch extends JFrame
 
 	Stopwatch()
 	{
-		setSize(225,75);
-		setTitle("Timer");
-		setLocation(100,100);
+		setSize(225, 75);
+		setTitle("Time");
+		setLocation(100, 100);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setLayout(new GridBagLayout());
 
 		time = new JLabel("");
 
-		time.setFont(new Font("",Font.BOLD, 36));
+		time.setFont(new Font("", Font.BOLD, 36));
 
 		time.setForeground(Color.BLACK);
 
 		add(time);
 
 		//starting new Thread which will update time
-		new Thread(new Runnable()
-		{
-			public void run() 
-			{ 
-				try 
-				{
+		new Thread(new Runnable() {
+			public void run() { 
+				try {
 					updateTime(); 
 				} 
-				catch (Exception ie) 
-				{
-						
+				catch (Exception ie) {
+					
 				}
 			}
 		}).start();
 	}
-
+	
+	/**
+	 * 
+	 */
 	public void updateTime() {
 		try { 
 			while (true) { 
-				//getting Time in desire format
+				
 				time.setText(getTimeElapsed());
 				Thread.currentThread();
 				//Thread sleeping for .1 sec
@@ -60,12 +59,15 @@ public class Stopwatch extends JFrame
 		}
 	}
 
+	/**
+	 * @return 
+	 */
 	public String getTimeElapsed() { 
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		
 
 		String milliseconds = Integer.toString((int) (elapsedTime % 60));
-		elapsedTime = elapsedTime/1000;
+		elapsedTime = elapsedTime / 1000;
 		String seconds = Integer.toString((int) (elapsedTime % 60));
 		String minutes = Integer.toString((int) ((elapsedTime % 3600) / 60));
 		String hours = Integer.toString((int) (elapsedTime / 3600));
@@ -83,20 +85,25 @@ public class Stopwatch extends JFrame
 		}
 			
 
-		if (hours.length() < 2){ 
+		if (hours.length() < 2) { 
 			hours = "0" + hours;
 		}
 
 		return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
 	}
 
-	public static long CalculateTotalTime(long endTime){
+	/**
+	 * @param endTime
+	 * @return The total time difference between the startTime of the Stopwatch
+	 * and the endTime.
+	 */
+	public static long CalculateTotalTime(long endTime) {
 		return (endTime - startTime);
 	}
 	
-	public static void main(String[] args) 
-	{
-		JFrame obj = new Stopwatch();
-		obj.setVisible(true);
-	}
+	
+//	public static void main(String[] args) {
+//		JFrame obj = new Stopwatch();
+//		obj.setVisible(true);
+//	}
 }
