@@ -19,7 +19,10 @@ public class GameBackground {
 	private int y;
 	
 	/** Set initial speed of scroll to 5. */
-	private int speed = 5;
+	private static final int INITIAL_SPEED = 5;
+	
+	/** Speed of scrolling. */
+	private int speed;
 	
 	/** Contains Background Image. */
 	private BufferedImage image;
@@ -27,9 +30,12 @@ public class GameBackground {
 	/**
 	 * Constructor for GameBackground class. 
 	 * Sets coordinates for x and y to 0
+	 * @throws MissingBackgroundException throws exception 
+	 * if background failed to load
 	 */
-	public GameBackground() {
+	public GameBackground() throws MissingBackgroundException {
 		this(0, 0);
+		this.speed = INITIAL_SPEED;
 	}
 	
 	/**
@@ -38,8 +44,11 @@ public class GameBackground {
 	 * placement of background.
 	 * @param xCoordinate coordinate for image placement
 	 * @param yCoordinate coordinate for image placement
+	 * @throws MissingBackgroundException throws MissingBackgroundException 
+	 * if bg failed to load
 	 */
-	public GameBackground(final int xCoordinate, final int yCoordinate) {
+	public GameBackground(final int xCoordinate, final int yCoordinate) 
+			throws MissingBackgroundException {
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
@@ -48,8 +57,10 @@ public class GameBackground {
 			image = ImageIO.read(new File(
 					"Graphics/Backgrounds/citybackground.png"));
 		} catch (Exception e) {
-			System.out.println(e);
+			throw new MissingBackgroundException();
 		}
+		
+		this.speed = INITIAL_SPEED;
 	}
 	
 	/**
@@ -98,11 +109,19 @@ public class GameBackground {
 	}
 	
 	/**
-	 * Get Background Image width.
+	 * Get background image width.
 	 * @return integer value of width of image
 	 */
 	public final int getImageWidth() {
 		return image.getWidth();
+	}
+	
+	/**
+	 * Get background image height.
+	 * @return integer value of height of image
+	 */
+	public final int getImageHeight() {
+		return image.getHeight();
 	}
 	
 	/**

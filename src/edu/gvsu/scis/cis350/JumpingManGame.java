@@ -22,9 +22,9 @@ public final class JumpingManGame extends JFrame {
 	static final long serialVersionUID = 0;
 	
 	/** Width for window. */
-	static final int FRAME_WIDTH = 1000;
+	//static final int FRAME_WIDTH = 1000;
 	/** Height for window. */
-	static final int FRAME_HEIGHT = 800;
+	//static final int FRAME_HEIGHT = 800;
 
 	/** Help item for menu. */
 	private JMenuItem help;
@@ -48,14 +48,25 @@ public final class JumpingManGame extends JFrame {
 	 */
 	private JumpingManGame() {
 		super("Jumping Man");
-		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 
 		setJMenuBar(this.createMenuBar());
 
-		back = new ScrollingBackground();
+		// Start game, if background doesn't exist then shut down nicely.
+		try {
+			back = new ScrollingBackground();
+		} catch (MissingBackgroundException e) {
+			String message = "Game failed to launch.";
+			JOptionPane.showMessageDialog(this, message, "Error", 0);
+			System.exit(0);
+		}
+		
+		if (back != null) {
+			setSize(back.getWidth(), back.getHeight());
+		}
+
 		
 		//add Keyboard listener to background
-		back.addKeyListener(new keyListener());
+		back.addKeyListener(new GameKeyListener());
 		((Component) back).setFocusable(true);
 		getContentPane().add(back);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -121,9 +132,9 @@ public final class JumpingManGame extends JFrame {
 	 * Listener class to carry out appropriate task 
 	 * when a menu item is selected.
 	 */
-	private class keyListener implements KeyListener {
+	private class GameKeyListener implements KeyListener {
 		@Override
-		public void keyPressed(KeyEvent e) {
+		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				System.out.println("Enter has been pressed");
 				if (!back.getScrolling()) {
@@ -134,11 +145,11 @@ public final class JumpingManGame extends JFrame {
 			}
 		}
 		@Override
-		public void keyReleased(KeyEvent e) {
+		public void keyReleased(final KeyEvent e) {
 			// TODO Auto-generated method stub
 		}
 		@Override
-		public void keyTyped(KeyEvent e) {
+		public void keyTyped(final KeyEvent e) {
 			// TODO Auto-generated method stub
 		}
 	}	

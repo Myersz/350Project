@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
  * 
  * @author Ella
  */
-public class ScrollingBackground extends Canvas implements Runnable {
+public final class ScrollingBackground extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = 0;
 
@@ -24,13 +24,18 @@ public class ScrollingBackground extends Canvas implements Runnable {
 
 	/** Set the background to move or not. */
 	private boolean scrolling;
+	
+	/** Sleep time of thread. */
+	private static final int SLEEP_TIME = 10;
 
 
 	/**
 	 * Constructor for ScrollingBackground Class.
 	 * Loads two background images and starts a thread to move the background
+	 * @throws MissingBackgroundException throws MissingBackgroundException 
+	 * if game failed to load background image
 	 */
-	public ScrollingBackground() {
+	public ScrollingBackground() throws MissingBackgroundException {
 		//Instantiate both background items
 		backOne = new GameBackground();
 		backTwo = new GameBackground(backOne.getImageWidth(), 0);
@@ -47,7 +52,7 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	 * Makes the background move.
 	 */
 	@Override
-	public final void run() {
+	public void run() {
 		System.out.println("Start running");
 		scrollBackground();
 		System.out.println("Done running");
@@ -57,11 +62,11 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	/** 
 	 * Method to start the background scrolling.
 	 */
-	public final void scrollBackground() {
+	public void scrollBackground() {
 		System.out.println("Start scrolling");
 		try {
 			while (this.scrolling) {
-				Thread.sleep(10);
+				Thread.sleep(SLEEP_TIME);
 				repaint();
 			}
 		} catch (Exception e) { }
@@ -73,7 +78,7 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	 * Updates the window.
 	 */
 	@Override
-	public final void update(final Graphics window) {
+	public void update(final Graphics window) {
 		paint(window);
 	}
 
@@ -81,7 +86,7 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	 * Puts the graphics on the window!!
 	 * @param window The graphics window to be painted.
 	 */
-	public final void paint(final Graphics window) {
+	public void paint(final Graphics window) {
 		Graphics2D twoD = (Graphics2D) window;
 
 		if (back == null) {
@@ -104,7 +109,7 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	 * Get if the screen is currently scrolling.
 	 * @return boolean value of scrolling
 	 */
-	public final boolean getScrolling() {
+	public boolean getScrolling() {
 		return scrolling;
 	}
 
@@ -112,14 +117,14 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	 * Make the background scroll.
 	 * @param pScrolling The new value for scrolling.
 	 */
-	public final void setScrolling(final Boolean pScrolling) {
+	public void setScrolling(final Boolean pScrolling) {
 		this.scrolling = pScrolling;
 	}
 
 	/**
 	 * Pause the thread and tell the background to stop scrolling.
 	 */
-	public final void pauseScrolling() {
+	public void pauseScrolling() {
 		System.out.println("I'm paused.");
 		this.setScrolling(false);
 	}
@@ -127,10 +132,26 @@ public class ScrollingBackground extends Canvas implements Runnable {
 	/**
 	 * Resume the thread and tell the background to start scrolling again.
 	 */
-	public final void resumeScrolling() {
+	public void resumeScrolling() {
 		System.out.println("I've resumed.");
 		this.setScrolling(true);	
 		new Thread(this).start();		
+	}
+	
+	/**
+	 * Return height of background.
+	 * @return integer value of height of background image
+	 */
+	public int getWidth() {
+		return backOne.getImageWidth();
+	}
+	
+	/**
+	 * Return width of background.
+	 * @return inteer value of width of background image
+	 */
+	public int getHeight() {
+		return backOne.getImageHeight();
 	}
 
 }
