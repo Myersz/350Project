@@ -33,7 +33,7 @@ public final class JumpingManGame extends JFrame {
 	/** Background for game. */
 	private ScrollingBackground back;
 	/** Obstacle for game. */
-	private MovingObstacle obstacle;
+	private ObstaclePanel obstacle;
 	
 	/**
 	 * Main method for game GUI.
@@ -68,7 +68,8 @@ public final class JumpingManGame extends JFrame {
 		}
 		
 		// Set up obstacle panel
-		obstacle = new MovingObstacle(back);
+		//obstacle = new MovingObstacle(back);
+		obstacle = new ObstaclePanel(back);
 		obstacle.setSize(back.getWidth(), back.getHeight());		
 				
 		// Add keyboard listener to background
