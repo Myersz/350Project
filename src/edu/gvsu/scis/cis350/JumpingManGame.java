@@ -32,6 +32,9 @@ public final class JumpingManGame extends JFrame {
 	/** Background for game. */
 	private ScrollingBackground back;
 	
+	/** Timer for the game */
+	private TimerPanel timer;
+	
 	/**
 	 * Main method for game GUI.
 	 * @param args Arguments
@@ -49,11 +52,15 @@ public final class JumpingManGame extends JFrame {
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 
 		setJMenuBar(this.createMenuBar());
-
+		timer = new TimerPanel();
+		this.add(timer);
+		
 		back = new ScrollingBackground();
 		((Component) back).setFocusable(true);
 		getContentPane().add(back);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		//this.add(timer);
 		setVisible(true);
 	}
 
