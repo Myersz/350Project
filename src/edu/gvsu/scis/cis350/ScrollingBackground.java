@@ -1,16 +1,17 @@
 package edu.gvsu.scis.cis350;
 
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import javax.swing.JPanel;
+
 /**
  * Manages background of game.
  * Controls the start and stop of the scrolling
  * 
  * @author Ella
  */
-public final class ScrollingBackground extends Canvas implements Runnable {
+public final class ScrollingBackground extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 0;
 
@@ -21,9 +22,6 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 
 	/** Holds the buffered background image. */
 	private BufferedImage back;
-
-	/** Set the background to move or not. */
-	private boolean scrolling;
 	
 	/** Sleep time of thread. */
 	private static final int SLEEP_TIME = 10;
@@ -42,7 +40,7 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 
 		//Start imaged not scrolling
 		/** Detect enter key pushed to change this */
-		scrolling = true;
+		GameControl.scrolling = false;
 
 		new Thread(this).start();
 		setVisible(true);
@@ -53,40 +51,20 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 	 */
 	@Override
 	public void run() {
-		System.out.println("Start running");
-		scrollBackground();
-		System.out.println("Done running");
-
-	}
-
-	/** 
-	 * Method to start the background scrolling.
-	 */
-	public void scrollBackground() {
-		System.out.println("Start scrolling");
 		try {
-			while (this.scrolling) {
+			while (GameControl.scrolling) {
 				Thread.sleep(SLEEP_TIME);
 				repaint();
 			}
 		} catch (Exception e) { }
-
-		System.out.println("Done scrolling");
-	}
-
-	/**
-	 * Updates the window.
-	 */
-	@Override
-	public void update(final Graphics window) {
-		paint(window);
 	}
 
 	/**
 	 * Puts the graphics on the window!!
 	 * @param window The graphics window to be painted.
 	 */
-	public void paint(final Graphics window) {
+	public void paintComponent(final Graphics window) {
+		super.paintComponent(window);
 		Graphics2D twoD = (Graphics2D) window;
 
 		if (back == null) {
@@ -110,7 +88,7 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 	 * @return boolean value of scrolling
 	 */
 	public boolean getScrolling() {
-		return scrolling;
+		return GameControl.scrolling;
 	}
 
 	/**
@@ -118,7 +96,7 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 	 * @param pScrolling The new value for scrolling.
 	 */
 	public void setScrolling(final Boolean pScrolling) {
-		this.scrolling = pScrolling;
+		GameControl.scrolling = pScrolling;
 	}
 
 	/**
@@ -155,4 +133,3 @@ public final class ScrollingBackground extends Canvas implements Runnable {
 	}
 
 }
-

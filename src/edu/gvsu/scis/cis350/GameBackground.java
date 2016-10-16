@@ -19,7 +19,7 @@ public class GameBackground {
 	private int y;
 	
 	/** Set initial speed of scroll to 5. */
-	private static final int INITIAL_SPEED = 5;
+	private static final int INITIAL_SPEED = 2;
 	
 	/** Speed of scrolling. */
 	private int speed;
@@ -35,7 +35,6 @@ public class GameBackground {
 	 */
 	public GameBackground() throws MissingBackgroundException {
 		this(0, 0);
-		this.speed = INITIAL_SPEED;
 	}
 	
 	/**
@@ -52,6 +51,8 @@ public class GameBackground {
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
+		this.speed = INITIAL_SPEED;
+		
 		//Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
@@ -59,8 +60,7 @@ public class GameBackground {
 		} catch (Exception e) {
 			throw new MissingBackgroundException();
 		}
-		
-		this.speed = INITIAL_SPEED;
+	
 	}
 	
 	/**
