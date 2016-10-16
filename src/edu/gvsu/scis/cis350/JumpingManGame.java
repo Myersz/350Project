@@ -1,11 +1,15 @@
 package edu.gvsu.scis.cis350;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -21,11 +25,6 @@ public final class JumpingManGame extends JFrame {
 
 	static final long serialVersionUID = 0;
 	
-	/** Width for window. */
-	//static final int FRAME_WIDTH = 1000;
-	/** Height for window. */
-	//static final int FRAME_HEIGHT = 800;
-
 	/** Help item for menu. */
 	private JMenuItem help;
 	/** Quit item for menu. */
@@ -33,6 +32,8 @@ public final class JumpingManGame extends JFrame {
 	
 	/** Background for game. */
 	private ScrollingBackground back;
+	/** Obstacle for game. */
+	private ObstaclePanel obstacle;
 	
 	/**
 	 * Main method for game GUI.
@@ -49,28 +50,41 @@ public final class JumpingManGame extends JFrame {
 	private JumpingManGame() {
 		super("Jumping Man");
 
-		setJMenuBar(this.createMenuBar());
+		this.setJMenuBar(this.createMenuBar());
 
-		// Start game, if background doesn't exist then shut down nicely.
+		// Set up bakcground, if background doesn't exist then shut down nicely.
 		try {
 			back = new ScrollingBackground();
+			back.setSize(back.getWidth(), back.getHeight());
 		} catch (MissingBackgroundException e) {
 			String message = "Game failed to launch.";
 			JOptionPane.showMessageDialog(this, message, "Error", 0);
 			System.exit(0);
 		}
 		
-		if (back != null) {
-			setSize(back.getWidth(), back.getHeight());
-		}
-
 		
-		//add Keyboard listener to background
+		if (back != null) {
+			this.setSize(back.getWidth(), back.getHeight() + 100);
+		}
+		
+		// Set up obstacle panel
+		//obstacle = new MovingObstacle(back);
+		obstacle = new ObstaclePanel(back);
+		obstacle.setSize(back.getWidth(), back.getHeight());		
+				
+		// Add keyboard listener to background
 		back.addKeyListener(new GameKeyListener());
 		((Component) back).setFocusable(true);
-		getContentPane().add(back);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
+		
+		// Add game panels to frame
+		this.getContentPane().add(obstacle);
+		this.getContentPane().add(back);
+		
+				
+		// Set up game window options
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setVisible(true);
+		this.setResizable(true);
 	}
 
 	/**
@@ -96,6 +110,7 @@ public final class JumpingManGame extends JFrame {
 		file.add(quit);
 
 		return menuBar;
+		
 	}
 
 	/**
@@ -118,6 +133,7 @@ public final class JumpingManGame extends JFrame {
 
 				if (result == 0) {
 					back.resumeScrolling();
+					obstacle.resumeMoving();
 				}
 			}
 
@@ -139,6 +155,7 @@ public final class JumpingManGame extends JFrame {
 				System.out.println("Enter has been pressed");
 				if (!back.getScrolling()) {
 					back.resumeScrolling();
+					obstacle.resumeMoving();
 				} else if (back.getScrolling()) {
 					back.pauseScrolling();
 				}
