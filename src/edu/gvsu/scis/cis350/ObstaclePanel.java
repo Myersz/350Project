@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -41,12 +40,18 @@ public class ObstaclePanel extends JPanel implements Runnable {
 
 	/** Running time of game in seconds. */
 	private int time;
-
+	
 	/** Number of seconds it takes for a new obstacle to appear. */
 	static final int OBSTACLE_FREQ = 5;
 
 	/** Frequency of timer update. */
 	static final int TIMER_LENGTH = 1000;
+	
+	/** Distance to move obstacle. */
+	static final int DISTANCE_TO_MOVE = 3;
+	
+	/** Milliseconds for thread to sleep. */
+	static final int THREAD_SLEEP = 10;
 
 	
 	/**
@@ -74,7 +79,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 */
 	private void moveObstacle() {
 		if (isOnScreen()) {
-			x = x - 3;
+			x = x - DISTANCE_TO_MOVE;
 		} else {
 			obstacleExists = false;
 		}
@@ -96,7 +101,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	@Override
 	public final void paintComponent(final Graphics g) {
 		if (obstacleExists) {
-			super.paintComponent(g);
+			//super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g;
 			g2d.fillRect(x, y, OBSTACLE_SIZE, OBSTACLE_SIZE);
 		}
@@ -113,7 +118,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 			this.moveObstacle();
 			this.repaint();
 			try {
-				Thread.sleep(10);
+				Thread.sleep(THREAD_SLEEP);
 			} catch (InterruptedException e) {
 				System.out.println("Error");
 			}
@@ -140,8 +145,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 		System.out.println("Obstacle added");
 	}
 
-
-
+	
 	/** 
 	 * Increment the time counter while the background is scrolling, 
 	 * add a new obstacle every five seconds.
@@ -157,6 +161,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 		}
 	}
 
+	
 	/** 
 	 * Timer listener.
 	 * @author Kelsey
@@ -170,7 +175,5 @@ public class ObstaclePanel extends JPanel implements Runnable {
 			}
 		}
 	}
-
-
 
 }
