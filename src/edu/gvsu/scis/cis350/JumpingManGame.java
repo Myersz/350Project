@@ -54,7 +54,7 @@ public final class JumpingManGame extends JFrame {
 
 		this.setJMenuBar(this.createMenuBar());
 
-		// Set up bakcground, if background doesn't exist then shut down nicely.
+		// Set up background, if background doesn't exist then shut down nicely.
 		try {
 			back = new ScrollingBackground();
 			back.setSize(back.getWidth(), back.getHeight());
@@ -72,7 +72,6 @@ public final class JumpingManGame extends JFrame {
 		timer = new TimerPanel();
 
 		// Set up obstacle panel
-		//obstacle = new MovingObstacle(back);
 		obstacle = new ObstaclePanel(back);
 		obstacle.setSize(back.getWidth(), back.getHeight());		
 				
@@ -116,6 +115,7 @@ public final class JumpingManGame extends JFrame {
 		return menuBar;
 		
 	}
+		
 
 	/**
 	 * Listener class to carry out appropriate task 
@@ -128,18 +128,12 @@ public final class JumpingManGame extends JFrame {
 			
 			// Show help screen
 			if (e.getSource() == help) {
+				
 				back.pauseScrolling();
 				String message = "To jump over an obstacle: Press up arrow key";
 				String[] options = {"OK"};
-				int result = JOptionPane.showOptionDialog(null, message, 
+				JOptionPane.showOptionDialog(null, message, 
 						"Game Help", 0, 1, null, options, options[0]);
-				
-
-				if (result == 0) {
-					back.resumeScrolling();
-					obstacle.resumeMoving();
-					timer.timerStart();
-				}
 			}
 
 			if (e.getSource() == quit) {
@@ -149,6 +143,7 @@ public final class JumpingManGame extends JFrame {
 		}
 	}
 	
+	
 	/**
 	 * Listener class to carry out appropriate task 
 	 * when a menu item is selected.
@@ -157,24 +152,25 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				System.out.println("Enter has been pressed");
-				if (!GameControl.getScrolling()) {
+				
+				if (!GameControl.getScrolling() && !GameControl.getGameLost()) {
 					back.resumeScrolling();
 					obstacle.resumeMoving();
 					timer.timerStart();
+					
 				} else if (GameControl.getScrolling()) {
 					back.pauseScrolling();
 					timer.timerPause();
 				}
 			}
 		}
+		
 		@Override
 		public void keyReleased(final KeyEvent e) {
-			// TODO Auto-generated method stub
 		}
+		
 		@Override
 		public void keyTyped(final KeyEvent e) {
-			// TODO Auto-generated method stub
 		}
 	}	
 }

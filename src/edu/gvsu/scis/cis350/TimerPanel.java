@@ -16,7 +16,7 @@ import javax.swing.Timer;
 public class TimerPanel extends JPanel {
 
 	private static final long serialVersionUID = 0;
-	
+
 	/** Label to hold background image. */
 	private JLabel timerLabel;
 	/** Timer object for the game. */
@@ -36,48 +36,50 @@ public class TimerPanel extends JPanel {
 
 	/** This the timer counter for the seconds. */
 	private int count = 0;
-	
+
 	/**
 	 * Default constructor for TimerPanel. 
 	 */
 	public TimerPanel() {
 		this.setLayout(new BorderLayout());
-	
+
 		timer = new Timer(DELAY, taskPerformer);
 		timerLabel = new JLabel();
-		timerLabel.setText("Timer(sec): 0.0");
+		timerLabel.setText("Score: 00");
 		this.add(timerLabel, BorderLayout.SOUTH);
 		timerLabel.setVisible(true);
-		}
+	}
 
 	/**
 	 * Listener for score.
 	 */
 	private ActionListener taskPerformer = new ActionListener() {
-	    public void actionPerformed(final ActionEvent evt) {
-	    	timerLabel.setText("Score: " + count / DIVISOR + (count++) 
-	    			% DIVISOR);
-	    	timerLabel.repaint();
-	    }
+		public void actionPerformed(final ActionEvent evt) {
+			if (!GameControl.getGameLost()) {
+				timerLabel.setText("Score: " + count / DIVISOR + (count++) 
+						% DIVISOR);
+				timerLabel.repaint();
+			}
+		}
 	};
-	
-	
+
+
 	/**
 	 * Start the timer.
 	 */
 	public final void timerStart() {
 		timer.start();
 	}
-	
-	
+
+
 	/** 
 	 * Pause the timer.
 	 */
 	public final void timerPause() {
 		timer.stop();
 	}
-	
-	
+
+
 	/**
 	 * Get the time. 
 	 * @return the time

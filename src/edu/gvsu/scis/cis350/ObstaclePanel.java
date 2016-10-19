@@ -29,10 +29,10 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	private Image obstacle;
 	
 	/** X-coordinate for obstacle. */
-	private int x;
+	private static int x;
 	
 	/** Y-coordinate for obstacle. */
-	private int y;
+	private static int y;
 	
 	/** Width of background area. */
 	private int bgWidth;
@@ -41,10 +41,10 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	private int bgHeight;
 	
 	/** Width of obstacle. */
-	private int obstacleWidth;
+	private static int obstacleWidth;
 	
 	/** Height of obstacle. */
-	private int obstacleHeight;
+	private static int obstacleHeight;
 
 	/** Control whether an obstacle is on the screen. */
 	private boolean obstacleExists = false;
@@ -68,7 +68,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	static final int THREAD_SLEEP = 10;
 
 	/** Image scaling. */
-	static final int SCALE = 5;
+	static final int SCALE = 6;
 	
 	
 	/**
@@ -193,7 +193,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 */
 	public final void countTime() {
 		if (GameControl.getScrolling()) {
-			time = time + 1;			
+			time = time + 1;	
 			System.out.println(time);
 
 			if (time > 0 && time % OBSTACLE_FREQ == 0) {
@@ -207,8 +207,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Set the x coordinate.
 	 * @param newX the new x coordinate.
 	 */
-	public final void setXCoord(final int newX) {
-		this.x = newX;
+	public static final void setXCoord(final int newX) {
+		ObstaclePanel.x = newX;
 	}
 	
 	
@@ -216,8 +216,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Get the x coordinate.
 	 * @return the x coordinate
 	 */
-	public final int getXCoord() {
-		return this.x;
+	public static final int getXCoord() {
+		return ObstaclePanel.x;
 	}
 	
 	
@@ -234,8 +234,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Return the width of the obstacle.
 	 * @return the width of the obstacle
 	 */
-	public final int getObstacleWidth() {
-		return this.obstacleWidth;
+	public static final int getObstacleWidth() {
+		return ObstaclePanel.obstacleWidth;
 	}
 	
 	
@@ -243,8 +243,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Return the height of the obstacle.
 	 * @return the height of the obstacle
 	 */
-	public final int getObstacleHeight() {
-		return this.obstacleHeight;
+	public static final int getObstacleHeight() {
+		return ObstaclePanel.obstacleHeight;
 	}
 	
 	
@@ -252,8 +252,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Get the y coordinate.
 	 * @return the y coordinate
 	 */
-	public final int getYCoord() {
-		return this.y;
+	public static final int getYCoord() {
+		return ObstaclePanel.y;
 	}
 	
 	
