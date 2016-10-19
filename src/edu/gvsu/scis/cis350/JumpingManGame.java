@@ -34,7 +34,7 @@ public final class JumpingManGame extends JFrame {
 	/** Timer for the game. */
 	private TimerPanel timer;
 	
-	/** Character for the game */
+	/** Character for the game. */
 	private CharacterPanel character;
 	
 	/** Height to fix screen display. */
@@ -89,6 +89,9 @@ public final class JumpingManGame extends JFrame {
 		this.getContentPane().add(obstacle);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
+		
+		System.out.println(character.getY());
+		System.out.println(character.getX());
 				
 		// Set up game window options
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -35,7 +35,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	private static int y;
 	
 	/** Width of background area. */
-	private int bgWidth;
+	private static int bgWidth;
 	
 	/** Height of background area. */
 	private int bgHeight;
@@ -68,7 +68,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	static final int THREAD_SLEEP = 10;
 
 	/** Image scaling. */
-	static final int SCALE = 6;
+	static final int SCALE = 7;
 	
 	
 	/**
@@ -94,6 +94,9 @@ public class ObstaclePanel extends JPanel implements Runnable {
 		
 		obstacleWidth = obstacle.getWidth(null);
 		obstacleHeight = obstacle.getHeight(null);
+		
+		x = bgWidth;
+		y = bgHeight - obstacleHeight;
 		
 		time = 0;
 		timer = new Timer(TIMER_LENGTH, new TimerListener());
@@ -122,7 +125,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * @return true if an obstacle should be painted currently, false otherwise
 	 */
 	public final boolean isOnScreen() {
-		return (x + obstacleWidth >= 0); 
+		int xPos = x;
+		return (xPos + obstacleWidth >= 0 && obstacleExists); 
 	}
 
 	
@@ -132,7 +136,6 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	@Override
 	public final void paintComponent(final Graphics g) {
 		if (obstacleExists) {
-			//super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D) g;		
 			g2d.drawImage(obstacle, x, y, null);
 		}
