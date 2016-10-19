@@ -1,5 +1,5 @@
 package edu.gvsu.scis.cis350;
-
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,17 +9,17 @@ import javax.swing.Timer;
 
 
 /**
- * Timer panel class.
+ * Panel to track the score of the game.
  * @author Kelsey
  *
  */
 public class TimerPanel extends JPanel {
-	
+
 	private static final long serialVersionUID = 0;
 	
 	/** Label to hold background image. */
 	private JLabel timerLabel;
-	/** Timer object to animate background. */
+	/** Timer object for the game. */
 	private Timer timer;
 	/** Width for window. */
 	static final int PANEL_WIDTH = 200;
@@ -29,35 +29,61 @@ public class TimerPanel extends JPanel {
 	static final int PANEL_LOCATION_WIDTH = 800;
 	/** Height for window. */
 	static final int PANEL_LOCATION_HEIGHT = 700;
+	/** Delay for timer. */
+	static final int DELAY = 100; //milliseconds
+	/** Divisor for score. */
+	static final int DIVISOR = 10;
+
 	/** This the timer counter for the seconds. */
 	private int count = 0;
 	
-	/** Delay for timer. */
-	static final int DELAY = 1000; //milliseconds
-
-	
 	/**
-	 * Default constructor for GamePanel.
-	 * @throws MissingBackgroundException if background images failed to load. 
+	 * Default constructor for TimerPanel. 
 	 */
 	public TimerPanel() {
-		this.setSize(PANEL_WIDTH, PANEL_HEIGHT);
-		this.setLocation(PANEL_LOCATION_WIDTH, PANEL_LOCATION_HEIGHT);
+		this.setLayout(new BorderLayout());
+	
 		timer = new Timer(DELAY, taskPerformer);
 		timerLabel = new JLabel();
-		this.add(timerLabel);
+		timerLabel.setText("Timer(sec): 0.0");
+		this.add(timerLabel, BorderLayout.SOUTH);
 		timerLabel.setVisible(true);
-		timer.start();
 		}
 
 	/**
-	 * Listener for timer.
+	 * Listener for score.
 	 */
 	private ActionListener taskPerformer = new ActionListener() {
 	    public void actionPerformed(final ActionEvent evt) {
-	    	timerLabel.setText(count++ + " sec");
+	    	timerLabel.setText("Score: " + count / DIVISOR + (count++) 
+	    			% DIVISOR);
 	    	timerLabel.repaint();
 	    }
 	};
+	
+	
+	/**
+	 * Start the timer.
+	 */
+	public final void timerStart() {
+		timer.start();
+	}
+	
+	
+	/** 
+	 * Pause the timer.
+	 */
+	public final void timerPause() {
+		timer.stop();
+	}
+	
+	
+	/**
+	 * Get the time. 
+	 * @return the time
+	 */
+	public final int getTime() {
+		return count;
+	}
 }
 

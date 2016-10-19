@@ -1,9 +1,6 @@
 package edu.gvsu.scis.cis350;
 
 import static org.junit.Assert.*;
-
-import java.awt.event.KeyEvent;
-
 import org.junit.Test;
 
 public class GameTest {
@@ -60,6 +57,7 @@ public class GameTest {
 	public void obstacleConstructorTest() throws MissingBackgroundException {
 		ScrollingBackground bg = new ScrollingBackground();
 		ObstaclePanel op = new ObstaclePanel(bg);
+		op.addObstacle();
 		
 		assertEquals(op.getXCoord(), bg.getWidth());
 		assertEquals(op.getYCoord(), bg.getHeight() - op.getObstacleHeight());
@@ -140,7 +138,7 @@ public class GameTest {
 	@Test
 	// Test launching full game
 	public void testGame() throws MissingBackgroundException {
-		JumpingManGame game = new JumpingManGame();
+		new JumpingManGame();
 	}
 	
 

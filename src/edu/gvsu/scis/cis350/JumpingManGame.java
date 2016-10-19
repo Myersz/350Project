@@ -34,7 +34,7 @@ public final class JumpingManGame extends JFrame {
 	/** Timer for the game. */
 	private TimerPanel timer;
 	
-	/** Height to add to panel to fix image. */
+	/** Height to fix screen display. */
 	private static final int HEIGHT_TO_ADD = 100;
 	
 	/**
@@ -138,6 +138,7 @@ public final class JumpingManGame extends JFrame {
 				if (result == 0) {
 					back.resumeScrolling();
 					obstacle.resumeMoving();
+					timer.timerStart();
 				}
 			}
 
@@ -160,8 +161,10 @@ public final class JumpingManGame extends JFrame {
 				if (!GameControl.getScrolling()) {
 					back.resumeScrolling();
 					obstacle.resumeMoving();
+					timer.timerStart();
 				} else if (GameControl.getScrolling()) {
 					back.pauseScrolling();
+					timer.timerPause();
 				}
 			}
 		}

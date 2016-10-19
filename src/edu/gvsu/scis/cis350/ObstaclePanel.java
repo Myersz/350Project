@@ -25,7 +25,6 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	/** Image for obstacle. */
 	private BufferedImage image;
 	
-	
 	/** Resized obstacle image. */
 	private Image obstacle;
 	
@@ -70,6 +69,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 
 	/** Image scaling. */
 	static final int SCALE = 5;
+	
 	
 	/**
 	 * Constructor to set up new obstacle panel and initial positions.
