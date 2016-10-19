@@ -2,9 +2,14 @@ package edu.gvsu.scis.cis350;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -16,6 +21,13 @@ import javax.swing.Timer;
 public class ObstaclePanel extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 0;
+	
+	/** Image for obstacle. */
+	private BufferedImage image;
+	
+	
+	/** Resized obstacle image. */
+	private Image obstacle;
 	
 	/** X-coordinate for obstacle. */
 	private int x;
@@ -29,8 +41,11 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	/** Height of background area. */
 	private int bgHeight;
 	
-	/** Size of obstacle. */
-	static final int OBSTACLE_SIZE = 60;
+	/** Width of obstacle. */
+	private int obstacleWidth;
+	
+	/** Height of obstacle. */
+	private int obstacleHeight;
 
 	/** Control whether an obstacle is on the screen. */
 	private boolean obstacleExists = false;
@@ -53,6 +68,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	/** Milliseconds for thread to sleep. */
 	static final int THREAD_SLEEP = 10;
 
+	/** Image scaling. */
+	static final int SCALE = 5;
 	
 	/**
 	 * Constructor to set up new obstacle panel and initial positions.
@@ -60,10 +77,23 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 */
 	public ObstaclePanel(final ScrollingBackground bg) {
 		
-		x = bg.getWidth();
-		y = bg.getHeight() - OBSTACLE_SIZE;
+		try {
+			image = ImageIO.read(new File(
+					"Graphics/Obstacles/obstacle.png"));
+		} catch (IOException e) {
+			System.out.println("Error loading obstacle image");
+		}
+		
+		if (image != null) {
+			obstacle = image.getScaledInstance(image.getWidth() / SCALE, 
+					image.getHeight() / SCALE, 0);
+		}
+		
 		bgWidth = bg.getWidth();
 		bgHeight = bg.getHeight();
+		
+		obstacleWidth = obstacle.getWidth(null);
+		obstacleHeight = obstacle.getHeight(null);
 		
 		time = 0;
 		timer = new Timer(TIMER_LENGTH, new TimerListener());
@@ -71,13 +101,14 @@ public class ObstaclePanel extends JPanel implements Runnable {
 		
 		this.setOpaque(false);
 		this.setDoubleBuffered(true);
+		this.setVisible(true);
 	}
 
 	
 	/**
 	 * Move the obstacle's position for painting.
 	 */
-	private void moveObstacle() {
+	public final void moveObstacle() {
 		if (isOnScreen()) {
 			x = x - DISTANCE_TO_MOVE;
 		} else {
@@ -90,8 +121,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * Control whether or not an obstacle should be painted.
 	 * @return true if an obstacle should be painted currently, false otherwise
 	 */
-	private boolean isOnScreen() {
-		return (x + OBSTACLE_SIZE >= 0); 
+	public final boolean isOnScreen() {
+		return (x + obstacleWidth >= 0); 
 	}
 
 	
@@ -102,8 +133,8 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	public final void paintComponent(final Graphics g) {
 		if (obstacleExists) {
 			//super.paintComponent(g);
-			Graphics2D g2d = (Graphics2D) g;
-			g2d.fillRect(x, y, OBSTACLE_SIZE, OBSTACLE_SIZE);
+			Graphics2D g2d = (Graphics2D) g;		
+			g2d.drawImage(obstacle, x, y, null);
 		}
 		
 	}
@@ -140,9 +171,19 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 */
 	public final void addObstacle() {
 		x = bgWidth;
-		y = bgHeight - OBSTACLE_SIZE;
+		y = bgHeight - obstacleHeight;
 		obstacleExists = true;		
+		
 		System.out.println("Obstacle added");
+	}
+	
+	
+	/**
+	 * Get the current time.
+	 * @return the number of seconds
+	 */
+	public final int getTime() {
+		return this.time;
 	}
 
 	
@@ -161,6 +202,60 @@ public class ObstaclePanel extends JPanel implements Runnable {
 		}
 	}
 
+	
+	/**
+	 * Set the x coordinate.
+	 * @param newX the new x coordinate.
+	 */
+	public final void setXCoord(final int newX) {
+		this.x = newX;
+	}
+	
+	
+	/** 
+	 * Get the x coordinate.
+	 * @return the x coordinate
+	 */
+	public final int getXCoord() {
+		return this.x;
+	}
+	
+	
+	/**
+	 * Return the value of obstacleExists.
+	 * @return true if there is an obstacle, false otherwise
+	 */
+	public final boolean getObstacleExists() {
+		return this.obstacleExists;
+	}
+	
+	
+	/**
+	 * Return the width of the obstacle.
+	 * @return the width of the obstacle
+	 */
+	public final int getObstacleWidth() {
+		return this.obstacleWidth;
+	}
+	
+	
+	/**
+	 * Return the height of the obstacle.
+	 * @return the height of the obstacle
+	 */
+	public final int getObstacleHeight() {
+		return this.obstacleHeight;
+	}
+	
+	
+	/**
+	 * Get the y coordinate.
+	 * @return the y coordinate
+	 */
+	public final int getYCoord() {
+		return this.y;
+	}
+	
 	
 	/** 
 	 * Timer listener.

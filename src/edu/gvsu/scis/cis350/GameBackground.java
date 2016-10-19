@@ -19,7 +19,7 @@ public class GameBackground {
 	private int y;
 	
 	/** Set initial speed of scroll to 5. */
-	private static final int INITIAL_SPEED = 2;
+	static final int INITIAL_SPEED = 2;
 	
 	/** Speed of scrolling. */
 	private int speed;

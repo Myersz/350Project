@@ -49,7 +49,7 @@ public final class JumpingManGame extends JFrame {
 	/**
 	 * Default constructor.
 	 */
-	private JumpingManGame() {
+	JumpingManGame() {
 		super("Jumping Man");
 
 		this.setJMenuBar(this.createMenuBar());

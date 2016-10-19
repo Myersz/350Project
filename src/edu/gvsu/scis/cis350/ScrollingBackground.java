@@ -42,6 +42,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 		/** Detect enter key pushed to change this */
 		//GameControl.scrolling = false;
 
+		this.setOpaque(false);
 		new Thread(this).start();
 		setVisible(true);
 	}
