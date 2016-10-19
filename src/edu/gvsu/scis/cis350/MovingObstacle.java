@@ -43,6 +43,9 @@ public final class MovingObstacle extends JPanel {
 
 	/** Length of time that thread will sleep. */
 	static final int SLEEP_TIME = 10;
+	
+	/** Distance to move obstacle. */
+	static final int MOVE = 10;
 
 	/**
 	 * Create a new obstacle width the specificed width and height.
@@ -69,7 +72,7 @@ public final class MovingObstacle extends JPanel {
 	 * add a new obstacle every five seconds.
 	 */
 	public void countTime() {
-		if (GameControl.scrolling) {
+		if (GameControl.getScrolling()) {
 			time = time + 1;			
 			System.out.println(time);
 
@@ -98,7 +101,7 @@ public final class MovingObstacle extends JPanel {
 	 */
 	private void moveObstacle() {
 		if (obstacle != null) {
-			obstacle.move(10);
+			obstacle.move(MOVE);
 		}
 	}
 	

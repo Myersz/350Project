@@ -114,7 +114,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 */
 	@Override
 	public final void run() {
-		while (GameControl.scrolling) {
+		while (GameControl.getScrolling()) {
 			this.moveObstacle();
 			this.repaint();
 			try {
@@ -151,7 +151,7 @@ public class ObstaclePanel extends JPanel implements Runnable {
 	 * add a new obstacle every five seconds.
 	 */
 	public final void countTime() {
-		if (GameControl.scrolling) {
+		if (GameControl.getScrolling()) {
 			time = time + 1;			
 			System.out.println(time);
 

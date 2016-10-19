@@ -1,15 +1,11 @@
 package edu.gvsu.scis.cis350;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -35,8 +31,11 @@ public final class JumpingManGame extends JFrame {
 	/** Obstacle for game. */
 	private ObstaclePanel obstacle;
 	
-	/** Timer for the game */
+	/** Timer for the game. */
 	private TimerPanel timer;
+	
+	/** Height to add to panel to fix image. */
+	private static final int HEIGHT_TO_ADD = 100;
 	
 	/**
 	 * Main method for game GUI.
@@ -67,7 +66,7 @@ public final class JumpingManGame extends JFrame {
 		
 		
 		if (back != null) {
-			this.setSize(back.getWidth(), back.getHeight() + 100);
+			this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		}
 
 		timer = new TimerPanel();
@@ -158,10 +157,10 @@ public final class JumpingManGame extends JFrame {
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				System.out.println("Enter has been pressed");
-				if (!back.getScrolling()) {
+				if (!GameControl.getScrolling()) {
 					back.resumeScrolling();
 					obstacle.resumeMoving();
-				} else if (back.getScrolling()) {
+				} else if (GameControl.getScrolling()) {
 					back.pauseScrolling();
 				}
 			}

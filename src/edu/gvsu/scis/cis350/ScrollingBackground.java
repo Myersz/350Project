@@ -40,7 +40,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 
 		//Start imaged not scrolling
 		/** Detect enter key pushed to change this */
-		GameControl.scrolling = false;
+		//GameControl.scrolling = false;
 
 		new Thread(this).start();
 		setVisible(true);
@@ -52,7 +52,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	@Override
 	public void run() {
 		try {
-			while (GameControl.scrolling) {
+			while (GameControl.getScrolling()) {
 				Thread.sleep(SLEEP_TIME);
 				repaint();
 			}
@@ -84,27 +84,11 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 
 
 	/**
-	 * Get if the screen is currently scrolling.
-	 * @return boolean value of scrolling
-	 */
-	public boolean getScrolling() {
-		return GameControl.scrolling;
-	}
-
-	/**
-	 * Make the background scroll.
-	 * @param pScrolling The new value for scrolling.
-	 */
-	public void setScrolling(final Boolean pScrolling) {
-		GameControl.scrolling = pScrolling;
-	}
-
-	/**
 	 * Pause the thread and tell the background to stop scrolling.
 	 */
 	public void pauseScrolling() {
 		System.out.println("I'm paused.");
-		this.setScrolling(false);
+		GameControl.setScrolling(false);
 	}
 
 	/**
@@ -112,7 +96,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	 */
 	public void resumeScrolling() {
 		System.out.println("I've resumed.");
-		this.setScrolling(true);	
+		GameControl.setScrolling(true);	
 		new Thread(this).start();		
 	}
 	

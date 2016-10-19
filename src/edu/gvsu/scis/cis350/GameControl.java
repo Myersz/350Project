@@ -8,26 +8,40 @@ package edu.gvsu.scis.cis350;
 public final class GameControl {
 
 	/** Indicates if the game has begun. */
-	public static boolean gameStarted;
+	//private static boolean gameStarted = false;
 	
 	/** Indicates if the game window is scrolling. */
-	public static boolean scrolling;
+	private static boolean scrolling = false;
 	
 	/** Indicates if the game is paused. */
-	public static boolean paused;
+	//private static boolean paused = false;
 	
 	/** Indicates that the game has been lost. */
-	public static boolean gameLost;
+	//private static boolean gameLost = false;
 	
 
 	/** 
 	 * Instantiate a new game control instance.
 	 */
 	private GameControl() {
-		gameStarted = false;
-		scrolling = false;
-		paused = false;
-		gameLost = false;
+	}
+	
+	
+	/**
+	 * Return boolean value of scrolling.
+	 * @return true if game is scrolling, false otherwise
+	 */
+	public static boolean getScrolling() {
+		return scrolling;
+	}
+	
+	
+	/**
+	 * Set scrolling for game control.
+	 * @param pScrolling the new state of scrolling
+	 */
+	public static void setScrolling(final boolean pScrolling) {
+		GameControl.scrolling = pScrolling;
 	}
 	
 }
