@@ -34,6 +34,9 @@ public final class JumpingManGame extends JFrame {
 	/** Timer for the game. */
 	private TimerPanel timer;
 	
+	/** Character for the game */
+	private CharacterPanel character;
+	
 	/** Height to fix screen display. */
 	private static final int HEIGHT_TO_ADD = 100;
 	
@@ -70,6 +73,8 @@ public final class JumpingManGame extends JFrame {
 		}
 
 		timer = new TimerPanel();
+		character = new CharacterPanel(back);
+		character.setSize(back.getWidth(), back.getHeight());	
 
 		// Set up obstacle panel
 		obstacle = new ObstaclePanel(back);
@@ -80,6 +85,7 @@ public final class JumpingManGame extends JFrame {
 		((Component) back).setFocusable(true);
 		
 		// Add game panels to frame
+		this.getContentPane().add(character);
 		this.getContentPane().add(obstacle);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
@@ -162,6 +168,10 @@ public final class JumpingManGame extends JFrame {
 					back.pauseScrolling();
 					timer.timerPause();
 				}
+			}
+			
+			if (e.getKeyCode() == KeyEvent.VK_UP) {
+				character.jump();
 			}
 		}
 		
