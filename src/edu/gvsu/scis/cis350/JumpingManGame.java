@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -37,6 +40,9 @@ public final class JumpingManGame extends JFrame {
 	
 	/** Timer for the game */
 	private TimerPanel timer;
+	
+	/** Character for the game */
+	private CharacterPanel character;
 	
 	/**
 	 * Main method for game GUI.
@@ -71,27 +77,32 @@ public final class JumpingManGame extends JFrame {
 		}
 
 		timer = new TimerPanel();
+		character = new CharacterPanel(back);
 
 		// Set up obstacle panel
 		//obstacle = new MovingObstacle(back);
 		obstacle = new ObstaclePanel(back);
 		obstacle.setSize(back.getWidth(), back.getHeight());		
 				
+		character.setSize(back.getWidth(), back.getHeight());	
+		
 		// Add keyboard listener to background
 		back.addKeyListener(new GameKeyListener());
 		((Component) back).setFocusable(true);
 		
 		// Add game panels to frame
+		this.getContentPane().add(character);
 		this.getContentPane().add(obstacle);
 		this.getContentPane().add(back);
-		this.getContentPane().add(timer);
-				
+		System.out.println(character.getY());
+		System.out.println(character.getX());
+
 		// Set up game window options
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(true);
 	}
-
+    
 	/**
 	 * Sets up menu bar for game window.
 	 * @return a menu bar item
@@ -127,6 +138,9 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			
+//	        character.move();
+//	        repaint();
+	        
 			// Show help screen
 			if (e.getSource() == help) {
 				back.pauseScrolling();
@@ -165,11 +179,15 @@ public final class JumpingManGame extends JFrame {
 					back.pauseScrolling();
 				}
 			}
+			if (e.getKeyCode() == KeyEvent.VK_UP){
+				character.jump();
+			}
 		}
 		@Override
 		public void keyReleased(final KeyEvent e) {
-			// TODO Auto-generated method stub
+			//TODO 
 		}
+        
 		@Override
 		public void keyTyped(final KeyEvent e) {
 			// TODO Auto-generated method stub

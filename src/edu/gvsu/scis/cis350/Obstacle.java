@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 
 /**
  * Methods to control an obstacle in the game.
- * @author Kelsey
+ * @author Kelsu
  *
  */
 public class Obstacle extends JLabel {
@@ -26,7 +26,7 @@ public class Obstacle extends JLabel {
 
 
 	/**
-	 * Create a new obstacle width the specified width and height.
+	 * Create a new obstacle with the specified width and height.
 	 * @param bg The dimensions of the background image
 	 */
 	public Obstacle(final Dimension bg) {

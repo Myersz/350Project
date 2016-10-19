@@ -44,6 +44,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 
 		new Thread(this).start();
 		setVisible(true);
+		this.setOpaque(false);
 	}
 
 	/**
