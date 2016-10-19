@@ -35,6 +35,9 @@ public final class JumpingManGame extends JFrame {
 	/** Obstacle for game. */
 	private ObstaclePanel obstacle;
 	
+	/** Timer for the game */
+	private TimerPanel timer;
+	
 	/**
 	 * Main method for game GUI.
 	 * @param args Arguments
@@ -66,7 +69,9 @@ public final class JumpingManGame extends JFrame {
 		if (back != null) {
 			this.setSize(back.getWidth(), back.getHeight() + 100);
 		}
-		
+
+		timer = new TimerPanel();
+
 		// Set up obstacle panel
 		//obstacle = new MovingObstacle(back);
 		obstacle = new ObstaclePanel(back);
@@ -79,7 +84,7 @@ public final class JumpingManGame extends JFrame {
 		// Add game panels to frame
 		this.getContentPane().add(obstacle);
 		this.getContentPane().add(back);
-		
+		this.getContentPane().add(timer);
 				
 		// Set up game window options
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
