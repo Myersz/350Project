@@ -1,0 +1,1271 @@
+Last login: Wed Oct 19 21:04:08 on ttys002
+Katies-MacBook-Pro:~ Cook$ cd Projects/GVSU
+Katies-MacBook-Pro:GVSU Cook$ LS
+350Project	BMINT_Testing
+Katies-MacBook-Pro:GVSU Cook$ cd 350Project/
+Katies-MacBook-Pro:350Project Cook$ ls
+Graphics	bin		doc		src
+Katies-MacBook-Pro:350Project Cook$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	bin/README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+Katies-MacBook-Pro:350Project Cook$ git branch
+* master
+Katies-MacBook-Pro:350Project Cook$ git log
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+:...skipping...
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+
+:
+commit 0e4265d17d01b20f9ecc37678a3070be7a28b568
+Author: StarMella <konstp@mail.gvsu.edu>
+Date:   Wed Oct 19 19:59:59 2016 -0400
+
+    Javadoc for Release 1
+
+commit 33401a52b1fc224012b54afdd9e53addeb405518
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 19:25:15 2016 -0400
+
+    Release 1! Jumping implemented.
+
+commit 388c1b516f12aa626a3d44ec6cf2c497353873b6
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:32:54 2016 -0400
+
+    Character merged into master.
+
+commit cc2dd2f26b9011aabf056961695ff5638b5ee13b
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 17:07:40 2016 -0400
+
+    Fixes to game control.
+
+commit 9b42388c7379d442e15220a28431dd3143ad64be
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 16:03:08 2016 -0400
+
+    Timer panel fixed.
+
+commit 54f9887f0699ac556da643a9f55747d2f7a8ec4f
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 15:35:04 2016 -0400
+
+    More tests and better obstacle.
+
+commit 9802ce21677cfc73e97bef4e29cad53b958d42c1
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:49:22 2016 -0400
+
+    Fix checkstyle and some FindBugs things.
+
+commit 8ece386cd3d625385159d78bf87d911d4bc35297
+Merge: e708632 9b18384
+Author: Kelsey Brennan <brennank@mail.gvsu.edu>
+Date:   Wed Oct 19 11:36:22 2016 -0400
+
+    Merge branch 'master' of https://github.com/NeonYazzle/350Project
+
+commit 9b18384a65818d6a05c834d18607d4b361bb6f19
+Author: NeonYazzle <zpmyers@gmail.com>
+Date:   Wed Oct 19 10:20:49 2016 -0400
+
+:
