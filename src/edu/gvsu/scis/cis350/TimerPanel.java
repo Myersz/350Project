@@ -43,7 +43,7 @@ public class TimerPanel extends JPanel {
 	public TimerPanel() {
 		this.setLayout(new BorderLayout());
 
-		timer = new Timer(DELAY, taskPerformer);
+		timer = new Timer(DELAY, new TaskPerformer());
 		timerLabel = new JLabel();
 		timerLabel.setText("Score: 00");
 		this.add(timerLabel, BorderLayout.SOUTH);
@@ -53,13 +53,13 @@ public class TimerPanel extends JPanel {
 	/**
 	 * Listener for score.
 	 */
-	private ActionListener taskPerformer = new ActionListener() {
+	private class TaskPerformer implements ActionListener {
+		@Override
 		public void actionPerformed(final ActionEvent evt) {
-			if (!GameControl.getGameLost()) {
 				timerLabel.setText("Score: " + count / DIVISOR + (count++) 
 						% DIVISOR);
 				timerLabel.repaint();
-			}
+			
 		}
 	};
 

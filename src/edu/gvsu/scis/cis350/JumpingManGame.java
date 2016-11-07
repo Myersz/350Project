@@ -4,6 +4,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -21,27 +22,39 @@ public final class JumpingManGame extends JFrame {
 
 	static final long serialVersionUID = 0;
 	
+	/** New game item for menu. */
+	private JMenuItem newGame;
+	
 	/** Help item for menu. */
 	private JMenuItem help;
+	
 	/** Quit item for menu. */
 	private JMenuItem quit;
 	
 	/** Background for game. */
 	private ScrollingBackground back;
-	/** Obstacle for game. */
-	private ObstaclePanel obstacle;
 	
 	/** Timer for the game. */
 	private TimerPanel timer;
 	
-	/** Character for the game. */
-	private CharacterPanel character;
+	/** Panel with obstacles and character for game. */
+	private GamePanel game;
+	
+	/** Whether or not the game is scrolling. */
+	private boolean scrolling;
+	
+	/** Whether or not the game has been lost. */
+	private boolean gameLost;
 	
 	/** Height to fix screen display. */
 	private static final int HEIGHT_TO_ADD = 100;
 	
+	/** Timer to repeatedly check if game has been lost. */
+	private Timer gameStatus;
+	
+	
 	/**
-	 * Main method for game GUI.
+	 * Main method for game.
 	 * @param args Arguments
 	 */
 	public static void main(final String[] args) {
@@ -52,8 +65,11 @@ public final class JumpingManGame extends JFrame {
 	/**
 	 * Default constructor.
 	 */
-	JumpingManGame() {
+	public JumpingManGame() {
 		super("Jumping Man");
+		
+		this.scrolling = false;
+		this.gameLost = false;
 
 		this.setJMenuBar(this.createMenuBar());
 
@@ -72,33 +88,31 @@ public final class JumpingManGame extends JFrame {
 			this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		}
 
-		timer = new TimerPanel();
-		character = new CharacterPanel(back);
-		character.setSize(back.getWidth(), back.getHeight());	
-
-		// Set up obstacle panel
-		obstacle = new ObstaclePanel(back);
-		obstacle.setSize(back.getWidth(), back.getHeight());		
+		timer = new TimerPanel();		
+		
+		game = new GamePanel(back);
+		game.setSize(back.getWidth(), back.getHeight());
 				
 		// Add keyboard listener to background
 		back.addKeyListener(new GameKeyListener());
 		((Component) back).setFocusable(true);
 		
+		// Set up timer to check game status
+		gameStatus = new Timer(10, new TimerListener());
+		gameStatus.start();
+		
 		// Add game panels to frame
-		this.getContentPane().add(character);
-		this.getContentPane().add(obstacle);
+		this.getContentPane().add(game);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
 		
-		System.out.println(character.getY());
-		System.out.println(character.getX());
-				
 		// Set up game window options
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(true);
 	}
 
+	
 	/**
 	 * Sets up menu bar for game window.
 	 * @return a menu bar item
@@ -111,6 +125,11 @@ public final class JumpingManGame extends JFrame {
 
 		ButtonListener listener = new ButtonListener();
 
+		newGame = new JMenuItem("New game");
+		newGame.getAccessibleContext().setAccessibleDescription("New game");
+		newGame.addActionListener(listener);
+		file.add(newGame);
+		
 		help = new JMenuItem("Help");
 		help.getAccessibleContext().setAccessibleDescription("Help");
 		help.addActionListener(listener);
@@ -124,7 +143,7 @@ public final class JumpingManGame extends JFrame {
 		return menuBar;
 		
 	}
-		
+
 
 	/**
 	 * Listener class to carry out appropriate task 
@@ -148,6 +167,11 @@ public final class JumpingManGame extends JFrame {
 			if (e.getSource() == quit) {
 				System.exit(0);
 			}
+			
+			if (e.getSource() == newGame) {
+				// TODO: Needs work to clear screen and start a nice new game
+				new JumpingManGame();
+			}
 
 		}
 	}
@@ -162,19 +186,24 @@ public final class JumpingManGame extends JFrame {
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				
-				if (!GameControl.getScrolling() && !GameControl.getGameLost()) {
+				if (!scrolling && !gameLost) {
 					back.resumeScrolling();
-					obstacle.resumeMoving();
+					game.resumeScrolling();
 					timer.timerStart();
 					
-				} else if (GameControl.getScrolling()) {
+					scrolling = true;
+					
+				} else if (scrolling) {
 					back.pauseScrolling();
+					game.pauseScrolling();
 					timer.timerPause();
+					
+					scrolling = false;
 				}
 			}
 			
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
-				character.jump();
+				game.jump();
 			}
 		}
 		
@@ -186,4 +215,38 @@ public final class JumpingManGame extends JFrame {
 		public void keyTyped(final KeyEvent e) {
 		}
 	}	
+	
+	/**
+	 * Repeatedly check if the game has been lost and handle it when it happens.
+	 * @author Kelsey
+	 *
+	 */
+	private class TimerListener implements ActionListener {
+		@Override
+		public void actionPerformed(final ActionEvent e) {
+			if (game.getGameLost()) {
+				gameLost = true;
+				
+				back.pauseScrolling();
+				game.pauseScrolling();
+				timer.timerPause();
+				
+				scrolling = false;
+				
+				String message = "You ran into an obstacle. Game over.";
+				String[] options = {"Exit", "New Game"};
+				int result = JOptionPane.showOptionDialog(null, message, 
+						"Game over!", 0, 1, null, options, options[0]);
+				
+				// TODO: Needs work
+				if (result == 0) {
+					System.exit(0);
+				} else if (result == 1) {
+					new JumpingManGame();
+				} else {
+					System.exit(0);
+				}
+			}
+		}
+	}
 }
