@@ -56,7 +56,7 @@ public class GameBackground {
 		//Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
-					"Graphics/Backgrounds/citybackground.png"));
+					"Graphics/Backgrounds/frickenmushrooms.png"));
 		} catch (Exception e) {
 			throw new MissingBackgroundException();
 		}

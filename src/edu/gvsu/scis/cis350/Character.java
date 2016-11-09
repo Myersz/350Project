@@ -41,7 +41,7 @@ public final class Character {
 		bgHeight = backgroundHeight;
 
 		ImageIcon ii = new ImageIcon(
-				"Graphics/Characters/yesclearbackground.gif");
+				"Graphics/Characters/childgirl.gif");
 		image = ii.getImage();
 
 		characterHeight = image.getHeight(null);
