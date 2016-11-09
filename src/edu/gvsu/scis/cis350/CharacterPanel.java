@@ -55,7 +55,7 @@ public class CharacterPanel extends JPanel {
 		bgHeight = bg.getHeight();
 
 		ImageIcon ii = new ImageIcon(
-				"Graphics/Characters/yesclearbackground.gif");
+				"Graphics/Characters/childgirl.gif");
 		image = ii.getImage();
 
 		characterHeight = image.getHeight(null);

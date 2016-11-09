@@ -56,7 +56,11 @@ public class GameBackground {
 		//Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
-					"Graphics/Backgrounds/citybackground.png"));
+					"Graphics/Backgrounds/buymemorejewelry.jpg"));
+			// backgrounds that work: desert.png, frickenmushrooms.png, creepycave.png, duregmureg.png
+			// need to double the size of buymemorejewelry 
+			// make duregmureg bigger
+			// would need to alter: PIANOS.jpg
 		} catch (Exception e) {
 			throw new MissingBackgroundException();
 		}
