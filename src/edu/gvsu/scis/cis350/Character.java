@@ -49,10 +49,6 @@ public final class Character {
 		x = 0;
 		y = bgHeight - characterHeight;
 
-		System.out.println(bgHeight);
-		System.out.println(characterHeight);
-		System.out.println(y);
-		
 		isJumping = false;
 		isFalling = false;
 	}

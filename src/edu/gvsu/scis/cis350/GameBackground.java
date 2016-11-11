@@ -33,7 +33,7 @@ public class GameBackground {
 	 * @throws MissingBackgroundException throws exception 
 	 * if background failed to load
 	 */
-	public GameBackground() throws MissingBackgroundException {
+	public GameBackground() {
 		this(0, 0);
 	}
 	
@@ -46,8 +46,7 @@ public class GameBackground {
 	 * @throws MissingBackgroundException throws MissingBackgroundException 
 	 * if bg failed to load
 	 */
-	public GameBackground(final int xCoordinate, final int yCoordinate) 
-			throws MissingBackgroundException {
+	public GameBackground(final int xCoordinate, final int yCoordinate) {
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
@@ -58,7 +57,7 @@ public class GameBackground {
 			image = ImageIO.read(new File(
 					"Graphics/Backgrounds/citybackground.png"));
 		} catch (Exception e) {
-			throw new MissingBackgroundException();
+			System.out.println("Error loading background");
 		}
 	
 	}

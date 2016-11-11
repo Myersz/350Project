@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Main method to run the Jumping Man game.
+ * Main method to run the Jumping Man game. Manages GUI.
  * 
  * @author Kelsey
  *
@@ -21,38 +21,40 @@ import java.awt.event.KeyListener;
 public final class JumpingManGame extends JFrame {
 
 	static final long serialVersionUID = 0;
-	
+
 	/** New game item for menu. */
 	private JMenuItem newGame;
-	
+
 	/** Help item for menu. */
 	private JMenuItem help;
-	
+
 	/** Quit item for menu. */
 	private JMenuItem quit;
-	
+
 	/** Background for game. */
 	private ScrollingBackground back;
-	
+
 	/** Timer for the game. */
 	private TimerPanel timer;
-	
+
 	/** Panel with obstacles and character for game. */
 	private GamePanel game;
-	
+
 	/** Whether or not the game is scrolling. */
 	private boolean scrolling;
-	
+
 	/** Whether or not the game has been lost. */
 	private boolean gameLost;
-	
+
 	/** Height to fix screen display. */
 	private static final int HEIGHT_TO_ADD = 100;
-	
+
 	/** Timer to repeatedly check if game has been lost. */
 	private Timer gameStatus;
-	
-	
+
+	/** Timer delay. */
+	private static final int TIMER_DELAY = 10;
+
 	/**
 	 * Main method for game.
 	 * @param args Arguments
@@ -60,59 +62,72 @@ public final class JumpingManGame extends JFrame {
 	public static void main(final String[] args) {
 		new JumpingManGame();
 	}	
-	
+
 
 	/**
 	 * Default constructor.
 	 */
 	public JumpingManGame() {
 		super("Jumping Man");
-		
-		this.scrolling = false;
-		this.gameLost = false;
 
 		this.setJMenuBar(this.createMenuBar());
 
-		// Set up background, if background doesn't exist then shut down nicely.
-		try {
-			back = new ScrollingBackground();
-			back.setSize(back.getWidth(), back.getHeight());
-		} catch (MissingBackgroundException e) {
-			String message = "Game failed to launch.";
-			JOptionPane.showMessageDialog(this, message, "Error", 0);
-			System.exit(0);
-		}
-		
-		
-		if (back != null) {
-			this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
-		}
+		this.setUpGame();
 
-		timer = new TimerPanel();		
-		
-		game = new GamePanel(back);
-		game.setSize(back.getWidth(), back.getHeight());
-				
-		// Add keyboard listener to background
-		back.addKeyListener(new GameKeyListener());
-		((Component) back).setFocusable(true);
-		
-		// Set up timer to check game status
-		gameStatus = new Timer(10, new TimerListener());
-		gameStatus.start();
-		
-		// Add game panels to frame
-		this.getContentPane().add(game);
-		this.getContentPane().add(back);
-		this.getContentPane().add(timer);
-		
 		// Set up game window options
+		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.setResizable(true);
 	}
 
+
+	/**
+	 * Call methods to set up game.
+	 */
+	private void setUpGame() {
+		this.scrolling = false;
+		this.gameLost = false;
+
+		// Set up panels
+		back = new ScrollingBackground();
+		back.setSize(back.getWidth(), back.getHeight());
+
+		timer = new TimerPanel();	
+		timer.setSize(back.getWidth(), back.getHeight());
+
+		game = new GamePanel(back);
+		game.setSize(back.getWidth(), back.getHeight());
+
+		// Add keyboard listener to background
+		back.addKeyListener(new GameKeyListener());
+		((Component) back).setFocusable(true);
+
+		// Set up timer to check game status
+		gameStatus = new Timer(TIMER_DELAY, new TimerListener());
+		gameStatus.start();
+
+		// Add game panels to frame
+		this.getContentPane().add(game);
+		this.getContentPane().add(back);
+		this.getContentPane().add(timer);
+	}
+
+
+	/**
+	 * Remove panels from JFrame to get rid of old game.
+	 */
+	private void clearOldGame() {
+		this.getContentPane().remove(game);
+		this.getContentPane().remove(back);
+		this.getContentPane().remove(timer);
+		
+		game = null;
+		back = null;
+		timer = null;
+	}
 	
+
 	/**
 	 * Sets up menu bar for game window.
 	 * @return a menu bar item
@@ -129,7 +144,7 @@ public final class JumpingManGame extends JFrame {
 		newGame.getAccessibleContext().setAccessibleDescription("New game");
 		newGame.addActionListener(listener);
 		file.add(newGame);
-		
+
 		help = new JMenuItem("Help");
 		help.getAccessibleContext().setAccessibleDescription("Help");
 		help.addActionListener(listener);
@@ -141,7 +156,39 @@ public final class JumpingManGame extends JFrame {
 		file.add(quit);
 
 		return menuBar;
-		
+	}
+
+
+	/**
+	 * Call pause methods.
+	 */
+	private void pause() {
+		back.pauseScrolling();
+		game.pauseScrolling();
+		timer.timerPause();
+
+		scrolling = false;
+	}
+
+
+	/**
+	 * Call resume methods.
+	 */
+	private void resume() {
+		back.resumeScrolling();
+		game.resumeScrolling();
+		timer.timerStart();
+
+		scrolling = true;
+	}
+
+
+	/**
+	 * Quit game.
+	 */
+	private void quit() {
+		// Save score?
+		System.exit(0);
 	}
 
 
@@ -153,30 +200,38 @@ public final class JumpingManGame extends JFrame {
 	private class ButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			
+
 			// Show help screen
 			if (e.getSource() == help) {
-				
-				back.pauseScrolling();
-				String message = "To jump over an obstacle: Press up arrow key";
+				pause();
+				String message = "To pause/resume game: Press \"enter\" key \n "
+						+ "To jump over an obstacle: Press \"up\" arrow key";
 				String[] options = {"OK"};
 				JOptionPane.showOptionDialog(null, message, 
 						"Game Help", 0, 1, null, options, options[0]);
 			}
 
+			// Confirm quit
 			if (e.getSource() == quit) {
-				System.exit(0);
-			}
-			
-			if (e.getSource() == newGame) {
-				// TODO: Needs work to clear screen and start a nice new game
-				new JumpingManGame();
+				pause();
+				String message = "Are you sure you want to quit?";
+				int result = JOptionPane.showConfirmDialog(
+						null, message, "Quit", 0);
+				if (result == 0) {
+					quit();
+				}
 			}
 
+			// Start a new game
+			if (e.getSource() == newGame) {
+				pause();
+				clearOldGame();
+				setUpGame();
+			}
 		}
 	}
-	
-	
+
+
 	/**
 	 * Listener class to carry out appropriate task 
 	 * when a menu item is selected.
@@ -185,37 +240,28 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-				
+
 				if (!scrolling && !gameLost) {
-					back.resumeScrolling();
-					game.resumeScrolling();
-					timer.timerStart();
-					
-					scrolling = true;
-					
+					resume();
 				} else if (scrolling) {
-					back.pauseScrolling();
-					game.pauseScrolling();
-					timer.timerPause();
-					
-					scrolling = false;
-				}
+					pause();
+				}	
 			}
-			
+
 			if (e.getKeyCode() == KeyEvent.VK_UP) {
 				game.jump();
 			}
 		}
-		
+
 		@Override
 		public void keyReleased(final KeyEvent e) {
 		}
-		
+
 		@Override
 		public void keyTyped(final KeyEvent e) {
 		}
 	}	
-	
+
 	/**
 	 * Repeatedly check if the game has been lost and handle it when it happens.
 	 * @author Kelsey
@@ -225,26 +271,24 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			if (game.getGameLost()) {
+				pause();
 				gameLost = true;
-				
-				back.pauseScrolling();
-				game.pauseScrolling();
-				timer.timerPause();
-				
-				scrolling = false;
-				
+
 				String message = "You ran into an obstacle. Game over.";
-				String[] options = {"Exit", "New Game"};
+				String[] options = {"New Game", "Exit"};
 				int result = JOptionPane.showOptionDialog(null, message, 
 						"Game over!", 0, 1, null, options, options[0]);
-				
-				// TODO: Needs work
-				if (result == 0) {
-					System.exit(0);
-				} else if (result == 1) {
-					new JumpingManGame();
+
+				if (result == 1) {
+					// Exit
+					quit();	
+				} else if (result == 0) {
+					// Start a new game
+					clearOldGame();
+					setUpGame();
 				} else {
-					System.exit(0);
+					// Close dialog box 
+					game.setGameLost(false);
 				}
 			}
 		}

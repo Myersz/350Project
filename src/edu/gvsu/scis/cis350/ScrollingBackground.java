@@ -36,7 +36,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	 * @throws MissingBackgroundException throws MissingBackgroundException 
 	 * if game failed to load background image
 	 */
-	public ScrollingBackground() throws MissingBackgroundException {
+	public ScrollingBackground() {
 		//Instantiate both background items
 		backOne = new GameBackground();
 		backTwo = new GameBackground(backOne.getImageWidth(), 0);

@@ -176,10 +176,24 @@ public final class GamePanel extends JPanel {
 	}
 
 	
+	/**
+	 * Return whether or not the game has been lost.
+	 * @return true if game has been lost, false otherwise
+	 */
 	public boolean getGameLost() {
 		return this.gameLost;
 	}
 
+	
+	/**
+	 * Set the value of gameLost.
+	 * @param b the new value of gameLost
+	 */
+	public void setGameLost(final boolean b) {
+		this.gameLost = b;
+	}
+	
+	
 	/**
 	 * Count time for obstacle movement.
 	 */
