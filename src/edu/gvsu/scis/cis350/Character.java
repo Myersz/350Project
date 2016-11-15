@@ -19,10 +19,13 @@ public final class Character {
 
 	/** Height of background area. */
 	private int bgHeight;
+	
+	/** Width of background area. */
+	private int bgWidth;
 
 	/** Image for character. */
 	private Image image;
-
+	
 	/** Flag for jumping. */
 	private Boolean isJumping;
 
@@ -32,19 +35,24 @@ public final class Character {
 	/** Height of the character. */
 	private int characterHeight;
 
+	/** Width of character. */
+	private int characterWidth;
 	
 	/** 
 	 * Constructor for the character.
 	 * @param backgroundHeight height of game background
+	 * @param backgroundWidth width of game background
 	 */
-	public Character(final int backgroundHeight) {
+	public Character(final int backgroundWidth, final int backgroundHeight) {
 		bgHeight = backgroundHeight;
-
+		bgWidth = backgroundWidth;
+		
 		ImageIcon ii = new ImageIcon(
 				"Graphics/Characters/yesclearbackground.gif");
 		image = ii.getImage();
 
 		characterHeight = image.getHeight(null);
+		characterWidth = image.getWidth(null);
 
 		x = 0;
 		y = bgHeight - characterHeight;
@@ -100,6 +108,15 @@ public final class Character {
 	public int getXCoord() {
 		return this.x;
 	}
+	
+	
+	/**
+	 * Set the x coordinate of the character.
+	 * @param newX the new coordinate
+	 */
+	public void setXCoord(final int newX) {
+		this.x = newX;
+	}
 
 	
 	/**
@@ -109,6 +126,15 @@ public final class Character {
 	public int getYCoord() {
 		return this.y;
 	}
+	
+	
+	/**
+	 * Set the y coordinate of the character.
+	 * @param newY the new coordinate
+	 */
+	public void setYCoord(final int newY) {
+		this.y = newY;
+	}
 
 
 	/**
@@ -116,7 +142,18 @@ public final class Character {
 	 * @return width of character
 	 */
 	public int getWidth() {
-		return this.image.getWidth(null);
+		return this.characterWidth;
+	}
+	
+	
+	/**
+	 * Set the width of the character.
+	 * @param newWidth new width for character
+	 */
+	public void setWidth(final int newWidth) {
+		if (newWidth > 0 && newWidth <= bgWidth) {
+			this.characterWidth = newWidth;
+		}
 	}
 
 	
@@ -125,7 +162,18 @@ public final class Character {
 	 * @return height of character
 	 */
 	public int getHeight() {
-		return this.image.getHeight(null);
+		return this.characterHeight;
+	}
+	
+	
+	/**
+	 * Set the height of the character.
+	 * @param newHeight new character height
+	 */
+	public void setHeight(final int newHeight) {
+		if (newHeight > 0 && newHeight <= bgHeight) {
+			this.characterHeight = newHeight;
+		}
 	}
 	
 	
@@ -135,5 +183,16 @@ public final class Character {
 	 */
 	public Image getImage() {
 		return this.image;
+	}
+	
+	
+	/**
+	 * Set the character image and update height and width.
+	 * @param newImage new image for character
+	 */
+	public void setImage(final Image newImage) {
+		this.image = newImage;
+		this.setHeight(newImage.getHeight(null));
+		this.setWidth(newImage.getWidth(null));
 	}
 }

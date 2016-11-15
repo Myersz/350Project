@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  * @author Ella
  *
  */
-public class GameBackground {
+public class Background {
 	
 	/** x coordinate for location of image. */
 	private int x;
@@ -30,11 +30,10 @@ public class GameBackground {
 	/**
 	 * Constructor for GameBackground class. 
 	 * Sets coordinates for x and y to 0
-	 * @throws MissingBackgroundException throws exception 
-	 * if background failed to load
 	 */
-	public GameBackground() {
-		this(0, 0);
+	public Background() {
+		this.x = 0;
+		this.y = 0;
 	}
 	
 	/**
@@ -46,13 +45,13 @@ public class GameBackground {
 	 * @throws MissingBackgroundException throws MissingBackgroundException 
 	 * if bg failed to load
 	 */
-	public GameBackground(final int xCoordinate, final int yCoordinate) {
+	public Background(final int xCoordinate, final int yCoordinate) {
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
 		this.speed = INITIAL_SPEED;
 		
-		//Retrieve background image from file
+		// Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
 					"Graphics/Backgrounds/citybackground.png"));
@@ -61,6 +60,7 @@ public class GameBackground {
 		}
 	
 	}
+	
 	
 	/**
 	 * Re-Draw background shifted over.
@@ -83,6 +83,7 @@ public class GameBackground {
         }
 	}
 	
+	
 	/**
 	 * Set x coordinate.
 	 * @param xCoordinate coordinate x is to be set to
@@ -90,6 +91,7 @@ public class GameBackground {
 	public final void setX(final int xCoordinate) {
 		this.x = xCoordinate;
 	}
+	
 	
 	/**
 	 * Get x coordinate.
@@ -99,6 +101,7 @@ public class GameBackground {
 		return this.x;
 	}
 	
+	
 	/**
 	 * Get y coordinate.
 	 * @return y coordinate
@@ -106,6 +109,16 @@ public class GameBackground {
 	public final int getY() {
 		return this.y;
 	}
+	
+	
+	/**
+	 * Set the y coordinate.
+	 * @param yCoordinate the new y coordinate
+	 */
+	public final void setY(final int yCoordinate) {
+		this.y = yCoordinate;
+	}
+	
 	
 	/**
 	 * Get background image width.
@@ -123,6 +136,7 @@ public class GameBackground {
 		return image.getHeight();
 	}
 	
+	
 	/**
 	 * Get Speed of scrolling.
 	 * @return integer value for speed of scrolling
@@ -130,6 +144,7 @@ public class GameBackground {
 	public final int getSpeed() {
 		return this.speed;
 	}
+	
 	
 	/**
 	 * Set Speed of scrolling.

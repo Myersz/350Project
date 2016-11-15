@@ -11,14 +11,14 @@ import javax.swing.JPanel;
  * 
  * @author Ella
  */
-public final class ScrollingBackground extends JPanel implements Runnable {
+public final class BackgroundPanel extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 0;
 
 	/** First copy of the background image. */
-	private GameBackground backOne;
+	private Background backOne;
 	/** Second copy of the background image. */
-	private GameBackground backTwo;
+	private Background backTwo;
 
 	/** Holds the buffered background image. */
 	private BufferedImage back;
@@ -36,10 +36,10 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	 * @throws MissingBackgroundException throws MissingBackgroundException 
 	 * if game failed to load background image
 	 */
-	public ScrollingBackground() {
+	public BackgroundPanel() {
 		//Instantiate both background items
-		backOne = new GameBackground();
-		backTwo = new GameBackground(backOne.getImageWidth(), 0);
+		backOne = new Background();
+		backTwo = new Background(backOne.getImageWidth(), 0);
 
 		scrolling = false;
 

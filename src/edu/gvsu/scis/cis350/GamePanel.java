@@ -53,14 +53,14 @@ public final class GamePanel extends JPanel {
 	 * Constructor for the game panel.
 	 * @param bg the background of game
 	 */
-	public GamePanel(final ScrollingBackground bg) {
+	public GamePanel(final BackgroundPanel bg) {
 
 		scrolling = false;
 		gameLost = false;
 		
 		bgSize = new Dimension(bg.getWidth(), bg.getHeight());
 
-		character = new Character(bgSize.height);
+		character = new Character(bgSize.width, bgSize.height);
 
 		TimerListener timerListener = new TimerListener();
 

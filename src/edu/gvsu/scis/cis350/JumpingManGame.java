@@ -32,7 +32,7 @@ public final class JumpingManGame extends JFrame {
 	private JMenuItem quit;
 
 	/** Background for game. */
-	private ScrollingBackground back;
+	private BackgroundPanel back;
 
 	/** Timer for the game. */
 	private TimerPanel timer;
@@ -90,7 +90,7 @@ public final class JumpingManGame extends JFrame {
 		this.gameLost = false;
 
 		// Set up panels
-		back = new ScrollingBackground();
+		back = new BackgroundPanel();
 		back.setSize(back.getWidth(), back.getHeight());
 
 		timer = new TimerPanel();	

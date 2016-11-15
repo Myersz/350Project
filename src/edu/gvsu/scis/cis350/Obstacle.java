@@ -22,25 +22,25 @@ public class Obstacle {
 
 	/** X-coordinate of the obstacle. */
 	private int x;
-	
+
 	/** Y-coordinate of the obstacle. */
 	private int y;
-	
+
 	/** Width of the obstacle. */
 	private int obstacleWidth;
-	
+
 	/** Height of the obstacle. */
 	private int obstacleHeight;
 
 	/** Width of the background area. */
 	private int bgWidth;
-	
+
 	/** Height of the background area. */
 	private int bgHeight;
 
 	/** Amount to scale obstacle image by. */
 	static final int SCALE = 7;
-	
+
 	/** Distance to move obstacle by. */
 	static final int DISTANCE_TO_MOVE = 3;
 
@@ -75,10 +75,10 @@ public class Obstacle {
 		// Set initial x and y coordinates
 		x = bgWidth;
 		y = bgHeight - obstacleHeight;
-		
+
 		//System.out.println("X: " + x + " Y: " + y);
 	}
-	
+
 
 	/** 
 	 * Update the obstacle's position.
@@ -89,7 +89,7 @@ public class Obstacle {
 			//System.out.println("X: " + x + " Y: " + y);
 		}
 	}
-	
+
 
 	/**
 	 * Returns whether or not the obstacle is on the screen.
@@ -99,8 +99,8 @@ public class Obstacle {
 	private boolean isOnScreen() {
 		return (x + obstacleWidth >= 0 && x <= bgWidth); 
 	}
-	
-	
+
+
 	/**
 	 * Return the x coordinate of the obstacle.
 	 * @return an int representing the x coordinate of the obstacle
@@ -108,8 +108,17 @@ public class Obstacle {
 	public final int getXCoord() {
 		return this.x;
 	}
-	
-	
+
+
+	/**
+	 * Set the x coordinate.
+	 * @param newX the new x coordinate
+	 */
+	public final void setXCoord(final int newX) {
+		this.x = newX;
+	}
+
+
 	/**
 	 * Return the y coordinate of the obstacle.
 	 * @return an int representing the y coordinate of the obstacle
@@ -117,8 +126,17 @@ public class Obstacle {
 	public final int getYCoord() {
 		return this.y;
 	}
-	
-	
+
+
+	/**
+	 * Set the y coordinate.
+	 * @param newY the new y coordinate
+	 */
+	public final void setYCoord(final int newY) {
+		this.y = newY;
+	}
+
+
 	/**
 	 * Return the width of the obstacle.
 	 * @return an int representing the width of the obstacle
@@ -126,8 +144,18 @@ public class Obstacle {
 	public final int getObstacleWidth() {
 		return this.obstacleWidth;
 	}
-	
-	
+
+
+	/**
+	 * Set the width of the obstacle.
+	 * @param newWidth the new width of the obstacle
+	 */
+	public final void setObstacleWidth(final int newWidth) {
+		if (newWidth > 0 && newWidth <= bgWidth) {
+			this.obstacleWidth = newWidth;
+		}
+	}
+
 	/**
 	 * Return the height of the obstacle.
 	 * @return an int representing the height of the obstacle
@@ -135,8 +163,19 @@ public class Obstacle {
 	public final int getObstacleHeight() {
 		return this.obstacleHeight;
 	}
-	
-	
+
+
+	/**
+	 * Set the height of the obstacle.
+	 * @param newHeight the new height of the obstacle
+	 */
+	public final void setObstacleHeight(final int newHeight) {
+		if (newHeight > 0 && newHeight <= bgHeight) {
+			this.obstacleHeight = newHeight;
+		}
+	}
+
+
 	/**
 	 * Return the obstacle's image.
 	 * @return the Image object for the obstacle
@@ -144,4 +183,14 @@ public class Obstacle {
 	public final Image getImage() {
 		return this.obstacle;
 	}
+
+
+	/**
+	 * Set the image for the obstacle.
+	 * @param newImage the new image for the obstacle
+	 */
+	public final void setImage(final Image newImage) {
+		this.obstacle = newImage;
+	}
 }
+
