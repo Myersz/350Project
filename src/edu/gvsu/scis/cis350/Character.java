@@ -38,6 +38,11 @@ public final class Character {
 	/** Width of character. */
 	private int characterWidth;
 	
+	/** Velocity of the character */
+	private int velocity;
+	
+	/** Acceleration of the character */
+	private int acceleration;
 	/** 
 	 * Constructor for the character.
 	 * @param backgroundHeight height of game background
@@ -56,6 +61,8 @@ public final class Character {
 
 		x = 0;
 		y = bgHeight - characterHeight;
+		velocity = 0;
+		acceleration = -1;
 
 		isJumping = false;
 		isFalling = false;
@@ -68,6 +75,7 @@ public final class Character {
 	public void jump() {
 		if (!isJumping && !isFalling) {
 			isJumping = true;
+			velocity = 25;  
 		}
 	}
 
@@ -79,22 +87,26 @@ public final class Character {
 		// Rising
 		if (isJumping) {
 			if (y > bgHeight - characterHeight - 230) {
-				y = y - 5;
+				y = y - velocity;
+				velocity = velocity + acceleration;
 			}
 			if (y <= bgHeight - characterHeight - 220) { 
 				isFalling = true;
 				isJumping = false;
+				velocity = 0;
 			}
 
 		}
 		// Falling
 		if (isFalling) {
 			if (y < bgHeight) {
-				y = y + 5;
+				y = y + velocity;
+				velocity = velocity - acceleration;
 			}
 			if (y >= bgHeight - characterHeight) {
 				isFalling = false;
 				isJumping = false;
+				velocity = 0;
 			}
 		}
 
