@@ -14,9 +14,6 @@ import javax.imageio.ImageIO;
  */
 public class Obstacle {
 
-	/** The image for the obstacle. */
-	private BufferedImage image;
-
 	/** The resized obstacle image. */
 	private Image obstacle;
 
@@ -39,7 +36,7 @@ public class Obstacle {
 	private int bgHeight;
 
 	/** Amount to scale obstacle image by. */
-	static final int SCALE = 7;
+	static final int SCALE = 1;
 
 	/** Distance to move obstacle by. */
 	static final int DISTANCE_TO_MOVE = 3;
@@ -50,18 +47,14 @@ public class Obstacle {
 	 * @param backgroundHeight the height of the background area
 	 */
 	public Obstacle(final int backgroundWidth, final int backgroundHeight) {
-		// Load image to get sizes
+		// Load a random image from the obstacle graphics
+		int num = ((int) Math.ceil(Math.random() * 10)) % 2;
+		
 		try {
-			image = ImageIO.read(new File(
-					"Graphics/Obstacles/obstacle.png"));
+			obstacle = ImageIO.read(new File(
+					"Graphics/Obstacles/obstacle" + num + ".png"));
 		} catch (IOException e) {
 			System.out.println("Error loading obstacle image");
-		}
-
-		// Scale image
-		if (image != null) {
-			obstacle = image.getScaledInstance(image.getWidth() / SCALE, 
-					image.getHeight() / SCALE, 0);
 		}
 
 		// Set sizes of background area
@@ -82,22 +75,14 @@ public class Obstacle {
 
 	/** 
 	 * Update the obstacle's position.
+	 * @return whether or not the obstacle is still on the screen
 	 */
-	public final void moveObstacle() {
-		if (isOnScreen()) {
+	public final boolean moveObstacle() {
+		if (x + obstacleWidth >= 0 && x <= bgWidth) {
 			x = x - DISTANCE_TO_MOVE;
-			//System.out.println("X: " + x + " Y: " + y);
+			return true;
 		}
-	}
-
-
-	/**
-	 * Returns whether or not the obstacle is on the screen.
-	 * @return true if obstacle's position is within the screen size, 
-	 * false otherwise
-	 */
-	private boolean isOnScreen() {
-		return (x + obstacleWidth >= 0 && x <= bgWidth); 
+		return false;
 	}
 
 

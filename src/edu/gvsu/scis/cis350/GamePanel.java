@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -20,35 +21,38 @@ public final class GamePanel extends JPanel {
 
 	/** The character for the game. */
 	private Character character;
-	
+
 	/** The obstacles for the game. */
-	private Obstacle obstacle;
-	
+	private ArrayList<Obstacle> obstacles;
+
 	/** The timer to control adding obstacles. */
 	private Timer obstacleAddTimer;
-	
+
 	/** The timer to control moving obstacles. */
 	private Timer obstacleMoveTimer;
-	
+
 	/** The timer to control moving the character. */
 	private Timer characterTimer;
 
 	/** The number of seconds that have passed while the game is running. */
 	private int time;
+
+	/** The initial number of milliseconds between obstacles being added. */
+	private static final int INITIAL_FREQ = 60;
 	
-	/** The number of seconds between obstacles being added. */
-	private static final int OBSTACLE_FREQ = 5;
-	
+	/** The current number of milliseconds between obstacles being added. */
+	private int obstacleFrequency;
+
 	/** Whether or not the game is scrolling. */
 	private boolean scrolling;
 
 	/** The dimensions of the background image. */
 	private Dimension bgSize;
-	
+
 	/** Whether or not the game has been lost. */
 	private boolean gameLost;
 
-	
+
 	/**
 	 * Constructor for the game panel.
 	 * @param bg the background of game
@@ -57,15 +61,18 @@ public final class GamePanel extends JPanel {
 
 		scrolling = false;
 		gameLost = false;
-		
+
 		bgSize = new Dimension(bg.getWidth(), bg.getHeight());
 
 		character = new Character(bgSize.width, bgSize.height);
 
+		obstacles = new ArrayList<Obstacle>();
+		obstacleFrequency = INITIAL_FREQ;
+		
 		TimerListener timerListener = new TimerListener();
 
 		time = 0;
-		obstacleAddTimer = new Timer(1000, timerListener);
+		obstacleAddTimer = new Timer(100, timerListener);
 		obstacleAddTimer.start();
 
 		obstacleMoveTimer = new Timer(10, timerListener);
@@ -86,11 +93,17 @@ public final class GamePanel extends JPanel {
 	 */
 	public void countTime() {
 		time = time + 1;	
-		System.out.println(time);
+		//System.out.println(time);
 
-		if (time > 0 && time % OBSTACLE_FREQ == 0) {
+		// Add an obstacle if it's the correct interval
+		if (time > 0 && time % obstacleFrequency == 0) {
 			this.addObstacle();
 
+		}
+		
+		// Increase the frequency every ten seconds
+		if (time > 0 && time % 100 == 0 && obstacleFrequency > 15) {
+			obstacleFrequency -= 5;
 		}
 	}
 
@@ -99,8 +112,7 @@ public final class GamePanel extends JPanel {
 	 * Create a new obstacle.
 	 */
 	public void addObstacle() {
-		obstacle = new Obstacle(bgSize.width, bgSize.height);		
-
+		obstacles.add(new Obstacle(bgSize.width, bgSize.height));
 		System.out.println("Obstacle added");
 	}
 
@@ -112,20 +124,39 @@ public final class GamePanel extends JPanel {
 	public void paintComponent(final Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
+		
+		// Draw the character
 		g2d.drawImage(character.getImage(), character.getXCoord(), 
 				character.getYCoord(), null);  
 
-		// If there is an obstacle on the screen, draw it, check for collision,
-		// then move it
-		if (obstacle != null) {
-			g2d.drawImage(obstacle.getImage(), obstacle.getXCoord(), 
-					obstacle.getYCoord(), null); 
-			haveCollided();
-			obstacle.moveObstacle();
+		// Draw and manage the obstacles
+		if (obstacles.size() > 0) {
+			// To hold obstacles that are now off screen
+			ArrayList<Obstacle> remove = new ArrayList<Obstacle>();
+			
+			// Check for collisions
+			this.haveCollided();
+			
+			// Iterate through obstacles and draw them
+			for (Obstacle o : obstacles) {
+				g2d.drawImage(o.getImage(), o.getXCoord(), 
+						o.getYCoord(), null); 
+				
+				// Move the obstacle, if it returns false (offscreen), 
+				// mark obstacle to be removed
+				if (!o.moveObstacle()) {
+					remove.add(o);
+				}
+			}
+			
+			// Remove any obstacles that are now off-screen
+			for (Obstacle o : remove) {
+				obstacles.remove(o);
+			}
 		}
 	}
 
-	
+
 	/**
 	 * Resume scrolling of obstacles and moving of character.
 	 */
@@ -133,7 +164,7 @@ public final class GamePanel extends JPanel {
 		this.scrolling = true;
 	}
 
-	
+
 	/**
 	 * Pause scrolling of obstacles and moving of character.
 	 */
@@ -141,7 +172,7 @@ public final class GamePanel extends JPanel {
 		this.scrolling = false;
 	}
 
-	
+
 	/**
 	 * Make the character jump.
 	 */
@@ -155,10 +186,9 @@ public final class GamePanel extends JPanel {
 	 */
 	private void haveCollided() {
 		// Set up obstacle coordinates
-		int obstacleLeftX = obstacle.getXCoord();
-		int obstacleRightX = obstacle.getXCoord() 
-				+ obstacle.getObstacleWidth();
-		int obstacleY = obstacle.getYCoord();
+		int obstacleLeftX;
+		int obstacleRightX;
+		int obstacleY;
 
 		// Set up character coordinates
 		int characterLeftX = character.getXCoord();
@@ -166,16 +196,23 @@ public final class GamePanel extends JPanel {
 				+ character.getImage().getWidth(null) - 70;
 		int characterY = character.getYCoord() 
 				+ character.getImage().getHeight(null) - 25;
-		
-		// Check for collision
-		if (!(characterRightX < obstacleLeftX 
-				|| characterLeftX > obstacleRightX || characterY < obstacleY)) {
-			this.gameLost = true;
+
+		// Iterate through each of the obstacles on the screen
+		for (Obstacle o : obstacles) {
+			obstacleLeftX = o.getXCoord();
+			obstacleRightX = o.getXCoord() + o.getObstacleWidth();
+			obstacleY = o.getYCoord();
+
+			// Check for collision
+			if (!(characterRightX < obstacleLeftX 
+					|| characterLeftX > obstacleRightX || characterY < obstacleY)) {
+				this.gameLost = true;
+			}
 		}
 
 	}
 
-	
+
 	/**
 	 * Return whether or not the game has been lost.
 	 * @return true if game has been lost, false otherwise
@@ -184,7 +221,7 @@ public final class GamePanel extends JPanel {
 		return this.gameLost;
 	}
 
-	
+
 	/**
 	 * Set the value of gameLost.
 	 * @param b the new value of gameLost
@@ -192,8 +229,8 @@ public final class GamePanel extends JPanel {
 	public void setGameLost(final boolean b) {
 		this.gameLost = b;
 	}
-	
-	
+
+
 	/**
 	 * Count time for obstacle movement.
 	 */
