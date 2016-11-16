@@ -6,13 +6,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Scoreboard {
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Scoreboard extends JPanel{
 	
-	ArrayList<Integer> highScores = new ArrayList<Integer>();
+	ArrayList<Integer> highScores = new ArrayList<Integer>(10);
 	String filename;
+	/** Label for the Scoreboard */
+	private JLabel ScoreBoardLabel;
 	
 	public Scoreboard(String nfile) {
 		this.filename = nfile;
+		printScoresToLabel();
 		getDataFromFile();
 	}
 	
@@ -21,6 +27,9 @@ public class Scoreboard {
 		while(fileIn.hasNextLine()) {
 			highScores.add(fileIn.nextInt());
 		}
+		while(highScores.size() < 10) {
+			highScores.add(0);
+		}
 	}
 	
 	public ArrayList<Integer> updateScores(int score) {
@@ -28,6 +37,8 @@ public class Scoreboard {
 		Collections.sort(highScores);
 		Collections.reverse(highScores);
 		highScores.remove(10);
+		sendDataToFile();
+		printScoresToLabel();
 		return highScores;
 	}
 	
@@ -43,9 +54,19 @@ public class Scoreboard {
 	
 	public void printScoresToTerminal() {
 		for(int i = 0; i < 10; i++){
-	    	System.out.println(highScores.get(i));
+	    	System.out.println("#" + i + ":" + highScores.get(i));
 	    }
 	}
+	
+	public void printScoresToLabel() {
+		String str = "";
+		for(int i = 0; i < 10; i++){
+	    	str += " #" + i + ":" + highScores.get(i);
+	    	ScoreBoardLabel.setText(str);
+	    }
+		this.repaint();
+	}
+	
 	
 	public ArrayList<Integer> getHighScores() {
 		return highScores;
@@ -54,4 +75,8 @@ public class Scoreboard {
 	public void setHighScores(ArrayList<Integer> highScores) {
 		this.highScores = highScores;
 	}
+	
 }
+
+
+

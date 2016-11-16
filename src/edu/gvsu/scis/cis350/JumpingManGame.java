@@ -52,6 +52,8 @@ public final class JumpingManGame extends JFrame {
 	/** Timer to repeatedly check if game has been lost. */
 	private Timer gameStatus;
 	
+	private Scoreboard gameScoreboard;
+	
 	
 	/**
 	 * Main method for game.
@@ -87,7 +89,8 @@ public final class JumpingManGame extends JFrame {
 		if (back != null) {
 			this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		}
-
+		gameScoreboard = new Scoreboard("Scoreboard.txt");
+		
 		timer = new TimerPanel();		
 		
 		game = new GamePanel(back);
@@ -105,6 +108,7 @@ public final class JumpingManGame extends JFrame {
 		this.getContentPane().add(game);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
+		this.getContentPane().add(gameScoreboard);
 		
 		// Set up game window options
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

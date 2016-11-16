@@ -17,7 +17,7 @@ public class TimerPanel extends JPanel {
 
 	private static final long serialVersionUID = 0;
 
-	/** Label to hold background image. */
+	/** Label for the Score Timer. */
 	private JLabel timerLabel;
 	/** Timer object for the game. */
 	private Timer timer;
