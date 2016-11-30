@@ -22,9 +22,6 @@ public final class JumpingManGame extends JFrame {
 
 	static final long serialVersionUID = 0;
 
-	/** New game item for menu. */
-	private JMenuItem newGame;
-
 	/** Help item for menu. */
 	private JMenuItem help;
 
@@ -54,6 +51,8 @@ public final class JumpingManGame extends JFrame {
 
 	/** Timer delay. */
 	private static final int TIMER_DELAY = 10;
+	
+	private Scoreboard gameScoreboard;
 
 	/**
 	 * Main method for game.
@@ -89,7 +88,7 @@ public final class JumpingManGame extends JFrame {
 		this.scrolling = false;
 		this.gameLost = false;
 
-		// Set up panels
+		// Set up panels		
 		back = new BackgroundPanel();
 		back.setSize(back.getWidth(), back.getHeight());
 
@@ -99,6 +98,9 @@ public final class JumpingManGame extends JFrame {
 		game = new GamePanel(back);
 		game.setSize(back.getWidth(), back.getHeight());
 
+		gameScoreboard = new Scoreboard("Scoreboard.txt");
+		gameScoreboard.setSize(back.getWidth(), back.getHeight());
+		
 		// Add keyboard listener to background
 		back.addKeyListener(new GameKeyListener());
 		((Component) back).setFocusable(true);
@@ -111,6 +113,7 @@ public final class JumpingManGame extends JFrame {
 		this.getContentPane().add(game);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
+		this.getContentPane().add(gameScoreboard);
 	}
 
 
@@ -119,12 +122,6 @@ public final class JumpingManGame extends JFrame {
 	 */
 	private void clearOldGame() {
 		this.getContentPane().removeAll();
-
-		game.removeAll();
-		back.removeAll();
-		timer.removeAll();
-
-		gameStatus = null;
 
 		game = null;
 		back = null;
@@ -222,13 +219,6 @@ public final class JumpingManGame extends JFrame {
 					quit();
 				}
 			}
-
-			// Start a new game
-			if (e.getSource() == newGame) {
-				pause();
-				clearOldGame();
-				setUpGame();
-			}
 		}
 	}
 
@@ -272,7 +262,6 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
 			if (game.getGameLost() && !gameLost) {
-				System.out.println("Game over.");
 				pause();
 				gameLost = true;
 
