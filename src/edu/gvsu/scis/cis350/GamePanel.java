@@ -101,8 +101,8 @@ public final class GamePanel extends JPanel {
 
 		}
 		
-		// Increase the frequency every ten seconds
-		if (time > 0 && time % 100 == 0 && obstacleFrequency > 15) {
+		// Increase the frequency every eight seconds
+		if (time > 0 && time % 80 == 0 && obstacleFrequency > 15) {
 			obstacleFrequency -= 5;
 		}
 	}
@@ -113,7 +113,7 @@ public final class GamePanel extends JPanel {
 	 */
 	public void addObstacle() {
 		obstacles.add(new Obstacle(bgSize.width, bgSize.height));
-		System.out.println("Obstacle added");
+		//System.out.println("Obstacle added");
 	}
 
 
@@ -191,9 +191,9 @@ public final class GamePanel extends JPanel {
 		int obstacleY;
 
 		// Set up character coordinates
-		int characterLeftX = character.getXCoord();
+		int characterLeftX = character.getXCoord() + 20;
 		int characterRightX = character.getXCoord() 
-				+ character.getImage().getWidth(null) - 70;
+				+ character.getImage().getWidth(null) - 50;
 		int characterY = character.getYCoord() 
 				+ character.getImage().getHeight(null) - 25;
 
@@ -205,8 +205,10 @@ public final class GamePanel extends JPanel {
 
 			// Check for collision
 			if (!(characterRightX < obstacleLeftX 
-					|| characterLeftX > obstacleRightX || characterY < obstacleY)) {
+					|| characterLeftX > obstacleRightX
+					|| characterY < obstacleY)) {
 				this.gameLost = true;
+				return;
 			}
 		}
 

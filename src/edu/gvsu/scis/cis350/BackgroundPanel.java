@@ -89,7 +89,6 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 	 * Pause the thread and tell the background to stop scrolling.
 	 */
 	public void pauseScrolling() {
-		System.out.println("I'm paused.");
 		this.scrolling = false;
 	}
 
@@ -97,7 +96,6 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 	 * Resume the thread and tell the background to start scrolling again.
 	 */
 	public void resumeScrolling() {
-		System.out.println("I've resumed.");
 		this.scrolling = true;	
 		new Thread(this).start();		
 	}

@@ -48,7 +48,7 @@ public class Obstacle {
 	 */
 	public Obstacle(final int backgroundWidth, final int backgroundHeight) {
 		// Load a random image from the obstacle graphics
-		int num = ((int) Math.ceil(Math.random() * 10)) % 2;
+		int num = ((int) Math.ceil(Math.random() * 10)) % 5;
 		
 		try {
 			obstacle = ImageIO.read(new File(

@@ -1,12 +1,15 @@
 package edu.gvsu.scis.cis350;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -71,14 +74,14 @@ public final class JumpingManGame extends JFrame {
 		super("Jumping Man");
 
 		this.setJMenuBar(this.createMenuBar());
-
+		
 		this.setUpGame();
-
+		
 		// Set up game window options
 		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(true);
+		this.setResizable(false);
 	}
 
 
@@ -118,15 +121,19 @@ public final class JumpingManGame extends JFrame {
 	 * Remove panels from JFrame to get rid of old game.
 	 */
 	private void clearOldGame() {
-		this.getContentPane().remove(game);
-		this.getContentPane().remove(back);
-		this.getContentPane().remove(timer);
-		
+		this.getContentPane().removeAll();
+
+		game.removeAll();
+		back.removeAll();
+		timer.removeAll();
+
+		gameStatus = null;
+
 		game = null;
 		back = null;
 		timer = null;
 	}
-	
+
 
 	/**
 	 * Sets up menu bar for game window.
@@ -139,11 +146,6 @@ public final class JumpingManGame extends JFrame {
 		menuBar.add(file);
 
 		ButtonListener listener = new ButtonListener();
-
-		newGame = new JMenuItem("New game");
-		newGame.getAccessibleContext().setAccessibleDescription("New game");
-		newGame.addActionListener(listener);
-		file.add(newGame);
 
 		help = new JMenuItem("Help");
 		help.getAccessibleContext().setAccessibleDescription("Help");
@@ -204,8 +206,9 @@ public final class JumpingManGame extends JFrame {
 			// Show help screen
 			if (e.getSource() == help) {
 				pause();
-				String message = "To pause/resume game: Press \"enter\" key \n "
-						+ "To jump over an obstacle: Press \"up\" arrow key";
+				String message = "To pause/resume game: Press \"enter\" key \n"
+						+ "To jump over an obstacle: Press \"up\" arrow key \n"
+						+ "To start a new game after losing: Press \"enter\" key";
 				String[] options = {"OK"};
 				JOptionPane.showOptionDialog(null, message, 
 						"Game Help", 0, 1, null, options, options[0]);
@@ -270,7 +273,8 @@ public final class JumpingManGame extends JFrame {
 	private class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (game.getGameLost()) {
+			if (game.getGameLost() && !gameLost) {
+				System.out.println("Game over.");
 				pause();
 				gameLost = true;
 
@@ -292,5 +296,8 @@ public final class JumpingManGame extends JFrame {
 				}
 			}
 		}
+		
+		
+		
 	}
 }
