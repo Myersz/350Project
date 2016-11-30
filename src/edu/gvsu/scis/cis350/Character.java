@@ -38,10 +38,10 @@ public final class Character {
 	/** Width of character. */
 	private int characterWidth;
 	
-	/** Velocity of the character */
+	/** Velocity of the character. */
 	private int velocity;
 	
-	/** Acceleration of the character */
+	/** Acceleration of the character. */
 	private int acceleration;
 	/** 
 	 * Constructor for the character.

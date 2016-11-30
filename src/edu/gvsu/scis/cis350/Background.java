@@ -32,7 +32,7 @@ public class Background {
 	 * Sets coordinates for x and y to 0
 	 */
 	public Background() {
-		this(0,0);
+		this(0, 0);
 	}
 	
 	/**

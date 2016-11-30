@@ -1,15 +1,12 @@
 package edu.gvsu.scis.cis350;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import java.awt.Component;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -208,7 +205,8 @@ public final class JumpingManGame extends JFrame {
 				pause();
 				String message = "To pause/resume game: Press \"enter\" key \n"
 						+ "To jump over an obstacle: Press \"up\" arrow key \n"
-						+ "To start a new game after losing: Press \"enter\" key";
+						+ "To start a new game after losing: Press \"enter\" "
+						+ "key";
 				String[] options = {"OK"};
 				JOptionPane.showOptionDialog(null, message, 
 						"Game Help", 0, 1, null, options, options[0]);
