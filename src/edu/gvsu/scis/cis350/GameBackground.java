@@ -3,6 +3,7 @@ import java.io.File;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  * Manages background of game.
@@ -33,8 +34,8 @@ public class GameBackground {
 	 * @throws MissingBackgroundException throws exception 
 	 * if background failed to load
 	 */
-	public GameBackground() throws MissingBackgroundException {
-		this(0, 0);
+	public GameBackground(final String background) throws MissingBackgroundException {
+		this(0, 0, background);
 	}
 	
 	/**
@@ -46,22 +47,23 @@ public class GameBackground {
 	 * @throws MissingBackgroundException throws MissingBackgroundException 
 	 * if bg failed to load
 	 */
-	public GameBackground(final int xCoordinate, final int yCoordinate) 
+	public GameBackground(final int xCoordinate, final int yCoordinate, final String background) 
 			throws MissingBackgroundException {
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
 		this.speed = INITIAL_SPEED;
-		
-		//Retrieve background image from file
+				
 		try {
 			image = ImageIO.read(new File(
-					"Graphics/Backgrounds/frickenmushrooms.png"));
+					"Graphics/Backgrounds/"+background));
 		} catch (Exception e) {
 			throw new MissingBackgroundException();
 		}
 	
 	}
+	
+
 	
 	/**
 	 * Re-Draw background shifted over.

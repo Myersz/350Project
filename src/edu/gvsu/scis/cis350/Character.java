@@ -3,6 +3,7 @@ package edu.gvsu.scis.cis350;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * Controls the character for the game.
@@ -38,10 +39,24 @@ public final class Character {
 	 * @param backgroundHeight height of game background
 	 */
 	public Character(final int backgroundHeight) {
+		
+		String characterSelection = getCharacterImage();
+		String filename = "citybackground.png"; 
+		
+		if(characterSelection == "Child Girl"){
+			filename = "childgirl.gif";
+		}else if(characterSelection == "Dinosaur"){
+			filename = "dinosaur.gif";
+		}else if(characterSelection == "Knight"){
+			filename = "knight.gif";
+		}else if(characterSelection == "SciFi Girl"){
+			filename = "scigirl.gif";
+		}
+		
 		bgHeight = backgroundHeight;
 
 		ImageIcon ii = new ImageIcon(
-				"Graphics/Characters/childgirl.gif");
+				"Graphics/Characters/"+filename);
 		image = ii.getImage();
 
 		characterHeight = image.getHeight(null);
@@ -67,6 +82,12 @@ public final class Character {
 		}
 	}
 
+	public String getCharacterImage(){
+		Object[] possibilities = {"Child Girl", "Dinosaur", "Knight", "SciFi Girl"};
+		String s = (String)JOptionPane.showInputDialog(null,"Select a character pls", "Customized Dialog",
+				JOptionPane.PLAIN_MESSAGE, null, possibilities, "Child Girl");
+		return s;
+	}
 	
 	/**
 	 * Move the character's coordinates while it's jumping.

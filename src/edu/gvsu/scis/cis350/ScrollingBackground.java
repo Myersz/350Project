@@ -3,6 +3,8 @@ package edu.gvsu.scis.cis350;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,11 +24,11 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 
 	/** Holds the buffered background image. */
 	private BufferedImage back;
-	
+
 	/** Sleep time of thread. */
 	private static final int SLEEP_TIME = 10;
-	
-	/** Whether or not the backround is scrolling. */
+
+	/** Whether or not the background is scrolling. */
 	private boolean scrolling;
 
 
@@ -37,15 +39,45 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	 * if game failed to load background image
 	 */
 	public ScrollingBackground() throws MissingBackgroundException {
+		
+		//Retrieve background image from file
+		String backgroundSelection = getBackgroundImage();
+
+		String filename = "citybackground.png"; 
+
+		if(backgroundSelection == "Purple Forest"){
+			filename = "buymemorejewelry.jpg";
+		}else if(backgroundSelection == "Boring City"){
+			filename = "citybackground.png";
+		}else if(backgroundSelection == "Cave of Death"){
+			filename = "creepycave.png";
+		}else if(backgroundSelection == "Desert of Sorrow"){
+			filename = "desert.png";
+		}else if(backgroundSelection == "Futuristic"){
+			filename = "duregmureg.png";
+		}else if(backgroundSelection == "Fricken Mushrooms"){
+			filename = "frickenmushrooms.png";
+		}
+		
 		//Instantiate both background items
-		backOne = new GameBackground();
-		backTwo = new GameBackground(backOne.getImageWidth(), 0);
+		backOne = new GameBackground(filename);
+		backTwo = new GameBackground(backOne.getImageWidth(), 0, filename);
 
 		scrolling = false;
 
 		this.setOpaque(false);
 		new Thread(this).start();
 		setVisible(true);
+
+
+
+	}
+
+	public String getBackgroundImage(){
+		Object[] possibilities = {"Purple Forest", "Boring City", "Cave of Death", "Desert of Sorrow", "Futuristic", "Fricken Mushrooms"};
+		String s = (String)JOptionPane.showInputDialog(null,"Select a scene pls", "Customized Dialog",
+				JOptionPane.PLAIN_MESSAGE, null, possibilities, "Boring City");
+		return s;
 	}
 
 	/**
@@ -101,7 +133,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 		this.scrolling = true;	
 		new Thread(this).start();		
 	}
-	
+
 	/**
 	 * Return height of background.
 	 * @return integer value of height of background image
@@ -109,7 +141,7 @@ public final class ScrollingBackground extends JPanel implements Runnable {
 	public int getWidth() {
 		return backOne.getImageWidth();
 	}
-	
+
 	/**
 	 * Return width of background.
 	 * @return inteer value of width of background image
