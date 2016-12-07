@@ -74,10 +74,9 @@ public final class JumpingManGame extends JFrame {
 		this.setUpGame();
 		
 		// Set up game window options
-		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(false);
+		this.setResizable(true);
 	}
 
 
@@ -102,18 +101,29 @@ public final class JumpingManGame extends JFrame {
 		gameScoreboard.setSize(back.getWidth(), back.getHeight());
 		
 		// Add keyboard listener to background
-		back.addKeyListener(new GameKeyListener());
-		((Component) back).setFocusable(true);
+		
 
 		// Set up timer to check game status
 		gameStatus = new Timer(TIMER_DELAY, new TimerListener());
 		gameStatus.start();
 
+		System.out.println("bnefore adding");
+		
 		// Add game panels to frame
 		this.getContentPane().add(game);
 		this.getContentPane().add(back);
 		this.getContentPane().add(timer);
 		this.getContentPane().add(gameScoreboard);
+		
+		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
+
+		back.addKeyListener(new GameKeyListener());
+		((Component) back).setFocusable(true);
+		
+		
+		repaint();
+		
+		System.out.println("After adding");
 	}
 
 
@@ -176,6 +186,8 @@ public final class JumpingManGame extends JFrame {
 		timer.timerStart();
 
 		scrolling = true;
+		
+		System.out.println("Resume");
 	}
 
 
@@ -232,7 +244,7 @@ public final class JumpingManGame extends JFrame {
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-				if (!scrolling && !gameLost) {
+				if (!scrolling && !gameLost) {		
 					resume();
 				} else if (scrolling) {
 					pause();

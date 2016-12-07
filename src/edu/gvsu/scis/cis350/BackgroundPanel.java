@@ -3,6 +3,8 @@ package edu.gvsu.scis.cis350;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -37,9 +39,28 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 	 * if game failed to load background image
 	 */
 	public BackgroundPanel() {
+		//Retrieve background image from file
+		String backgroundSelection = getBackgroundImage();
+
+		String filename = "citybackground.png"; 
+
+		if(backgroundSelection == "Purple Forest"){
+			filename = "buymemorejewelry.jpg";
+		}else if(backgroundSelection == "Boring City"){
+			filename = "citybackground.png";
+		}else if(backgroundSelection == "Cave of Death"){
+			filename = "creepycave.png";
+		}else if(backgroundSelection == "Desert of Sorrow"){
+			filename = "desert.png";
+		}else if(backgroundSelection == "Futuristic"){
+			filename = "duregmureg.png";
+		}else if(backgroundSelection == "Fricken Mushrooms"){
+			filename = "frickenmushrooms.png";
+		}
+		
 		//Instantiate both background items
-		backOne = new Background();
-		backTwo = new Background(backOne.getImageWidth(), 0);
+		backOne = new Background(filename);
+		backTwo = new Background(backOne.getImageWidth(), 0, filename);
 
 		scrolling = false;
 
@@ -48,6 +69,20 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 		setVisible(true);
 	}
 
+	/**
+	 * Method to prompt the user to chose a background for the game.
+	 * @return scene string name of background chosen
+	 */
+	public String getBackgroundImage(){
+		Object[] possibilities = {"Purple Forest", "Boring City", "Cave of "
+				+ "Death", "Desert of Sorrow", "Futuristic", "Fricken "
+						+ "Mushrooms"};
+		String scene = (String)JOptionPane.showInputDialog(null,"Select a scene"
+				+ " pls", "Customized Dialog",
+				JOptionPane.PLAIN_MESSAGE, null, possibilities, "Boring City");
+		return scene;
+	}
+	
 	/**
 	 * Makes the background move.
 	 */
