@@ -40,8 +40,9 @@ public class Scoreboard extends JPanel{
 
 	/** This the timer counter for the seconds. */
 	private int count = 0;
-
+	/** This contains all of the highscores */
 	ArrayList<Integer> highScores = new ArrayList<Integer>(10);
+	/** The filename of the scores */
 	String filename;
 	/** Label for the Scoreboard */
 	private JLabel scoreBoardLabel;
@@ -70,7 +71,10 @@ public class Scoreboard extends JPanel{
 	}
 
 
-
+	/** 
+	 * Pulls in the top 5 score from the file nfile and
+	 * saves them into highScores
+	 **/
 	private void getDataFromFile() {
 		Scanner fileIn = null;
 		try {
@@ -86,6 +90,13 @@ public class Scoreboard extends JPanel{
 		}
 	}
 
+	/** 
+	 * This updates the scores where score is first added to highScores.
+	 * Then the 6th element of highScores is removed in the list
+	 * leaving a list of the top 5 scores. 
+	 * @param score the new score to be checked for a highscore
+	 * @return highScores the updated top 5 highscore list
+	 */
 	public ArrayList<Integer> updateScores() {
 		
 		highScores.add(getTime());
@@ -97,6 +108,9 @@ public class Scoreboard extends JPanel{
 		return highScores;
 	}
 
+	/** 
+	 * Prints highScores to file
+	 **/
 	public void sendDataToFile() {
 		try{
 			PrintWriter writer = new PrintWriter(this.filename, "UTF-8");
@@ -108,6 +122,10 @@ public class Scoreboard extends JPanel{
 	}
 
 
+	/** 
+	 * Formats the string of highscores into a nice simple list,
+	 * and repaints the GUI to the updated text.
+	 **/
 	public String printScoresToLabel() {
 		String str = "HighScores: ";
 		for (int i = 0; i < highScores.size() - 1; i++) {
@@ -117,12 +135,12 @@ public class Scoreboard extends JPanel{
 		return str;
 	}
 
+	/** 
+	 * returns the current highscores of the game
+	 * @return highScores the current highscores of the game
+	 */
 	public ArrayList<Integer> getHighScores() {
 		return highScores;
-	}
-
-	public void setHighScores(ArrayList<Integer> highScores) {
-		this.highScores = highScores;
 	}
 
 
