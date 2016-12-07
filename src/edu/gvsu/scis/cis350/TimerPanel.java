@@ -85,7 +85,7 @@ public class TimerPanel extends JPanel {
 	 * @return the time
 	 */
 	public final int getTime() {
-		return count;
+		return count / DIVISOR;
 	}
 }
 
