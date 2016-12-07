@@ -32,7 +32,7 @@ public final class JumpingManGame extends JFrame {
 	private BackgroundPanel back;
 
 	/** Timer for the game. */
-	private TimerPanel timer;
+	private Scoreboard score;
 
 	/** Panel with obstacles and character for game. */
 	private GamePanel game;
@@ -52,8 +52,6 @@ public final class JumpingManGame extends JFrame {
 	/** Timer delay. */
 	private static final int TIMER_DELAY = 10;
 	
-	private Scoreboard gameScoreboard;
-
 	/**
 	 * Main method for game.
 	 * @param args Arguments
@@ -92,14 +90,11 @@ public final class JumpingManGame extends JFrame {
 		back = new BackgroundPanel();
 		back.setSize(back.getWidth(), back.getHeight());
 
-		timer = new TimerPanel();	
-		timer.setSize(back.getWidth(), back.getHeight());
+		score = new Scoreboard();	
+		score.setSize(back.getWidth(), back.getHeight());
 
 		game = new GamePanel(back);
 		game.setSize(back.getWidth(), back.getHeight());
-
-		gameScoreboard = new Scoreboard("Scoreboard.txt");
-		gameScoreboard.setSize(back.getWidth(), back.getHeight());
 		
 		// Add keyboard listener to background
 		back.addKeyListener(new GameKeyListener());
@@ -112,8 +107,7 @@ public final class JumpingManGame extends JFrame {
 		// Add game panels to frame
 		this.getContentPane().add(game);
 		this.getContentPane().add(back);
-		this.getContentPane().add(timer);
-		this.getContentPane().add(gameScoreboard);
+		this.getContentPane().add(score);
 	}
 
 
@@ -125,7 +119,7 @@ public final class JumpingManGame extends JFrame {
 
 		game = null;
 		back = null;
-		timer = null;
+		score = null;
 	}
 
 
@@ -161,7 +155,7 @@ public final class JumpingManGame extends JFrame {
 	private void pause() {
 		back.pauseScrolling();
 		game.pauseScrolling();
-		timer.timerPause();
+		score.timerPause();
 
 		scrolling = false;
 	}
@@ -173,7 +167,7 @@ public final class JumpingManGame extends JFrame {
 	private void resume() {
 		back.resumeScrolling();
 		game.resumeScrolling();
-		timer.timerStart();
+		score.timerStart();
 
 		scrolling = true;
 	}
@@ -183,7 +177,7 @@ public final class JumpingManGame extends JFrame {
 	 * Quit game.
 	 */
 	private void quit() {
-		// Save score?
+		score.updateScores();
 		System.exit(0);
 	}
 
@@ -266,7 +260,7 @@ public final class JumpingManGame extends JFrame {
 				gameLost = true;
 
 				//Updates the score
-				gameScoreboard.updateScores(timer.getTime());
+				score.updateScores();
 				
 				String message = "You ran into an obstacle. Game over.";
 				String[] options = {"New Game", "Exit"};
