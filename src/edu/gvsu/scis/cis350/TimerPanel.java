@@ -56,8 +56,8 @@ public class TimerPanel extends JPanel {
 	private class TaskPerformer implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent evt) {
-				timerLabel.setText("Score: " + count / DIVISOR + (count++) 
-						% DIVISOR);
+				timerLabel.setText("Score: " + (count++) 
+						/ DIVISOR);
 				timerLabel.repaint();
 			
 		}
