@@ -265,6 +265,9 @@ public final class JumpingManGame extends JFrame {
 				pause();
 				gameLost = true;
 
+				//Updates the score
+				gameScoreboard.updateScores(timer.getTime());
+				
 				String message = "You ran into an obstacle. Game over.";
 				String[] options = {"New Game", "Exit"};
 				int result = JOptionPane.showOptionDialog(null, message, 
