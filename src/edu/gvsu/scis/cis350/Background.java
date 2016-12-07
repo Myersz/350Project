@@ -30,10 +30,12 @@ public class Background {
 	/**
 	 * Constructor for GameBackground class. 
 	 * Sets coordinates for x and y to 0
+	 * Sets background to image specified by input string
+	 * @param background string of chosen background file name
 	 */
-	public Background() {
-		this(0, 0);
-	}
+    public Background(final String background) {
+        this(0, 0, background);
+    }
 	
 	/**
 	 * Constructor for GameBackground class.
@@ -41,10 +43,11 @@ public class Background {
 	 * placement of background.
 	 * @param xCoordinate coordinate for image placement
 	 * @param yCoordinate coordinate for image placement
-	 * @throws MissingBackgroundException throws MissingBackgroundException 
-	 * if bg failed to load
+	 * @param background string of chosen background file name
 	 */
-	public Background(final int xCoordinate, final int yCoordinate) {
+	public Background(final int xCoordinate, final int yCoordinate, final 
+			String background) {
+
 		this.x = xCoordinate;
 		this.y = yCoordinate;
 		
@@ -53,7 +56,7 @@ public class Background {
 		// Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
-					"Graphics/Backgrounds/citybackground.png"));
+					"Graphics/Backgrounds/"+background));
 		} catch (Exception e) {
 			System.out.println("Error loading background");
 		}
