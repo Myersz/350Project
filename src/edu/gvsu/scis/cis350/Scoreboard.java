@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -120,7 +121,11 @@ public class Scoreboard extends JPanel {
 				writer.print("\n" + highScores.get(i));
 			}
 			writer.close();
-		} catch (Exception e) { }
+		} catch (FileNotFoundException e) { 
+			
+		} catch (UnsupportedEncodingException e) { 
+			
+		}
 	}
 
 

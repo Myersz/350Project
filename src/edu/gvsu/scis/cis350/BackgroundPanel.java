@@ -44,17 +44,17 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 
 		String filename = "citybackground.png"; 
 
-		if(backgroundSelection == "Purple Forest"){
+		if (backgroundSelection == "Purple Forest") {
 			filename = "buymemorejewelry.jpg";
-		}else if(backgroundSelection == "Boring City"){
+		} else if (backgroundSelection == "Boring City") {
 			filename = "citybackground.png";
-		}else if(backgroundSelection == "Cave of Death"){
+		} else if (backgroundSelection == "Cave of Death") {
 			filename = "creepycave.png";
-		}else if(backgroundSelection == "Desert of Sorrow"){
+		} else if (backgroundSelection == "Desert of Sorrow") {
 			filename = "desert.png";
-		}else if(backgroundSelection == "Futuristic"){
+		} else if (backgroundSelection == "Futuristic") {
 			filename = "duregmureg.png";
-		}else if(backgroundSelection == "Fricken Mushrooms"){
+		} else if (backgroundSelection == "Fricken Mushrooms") {
 			filename = "frickenmushrooms.png";
 		}
 		
@@ -73,12 +73,12 @@ public final class BackgroundPanel extends JPanel implements Runnable {
 	 * Method to prompt the user to chose a background for the game.
 	 * @return scene string name of background chosen
 	 */
-	public String getBackgroundImage(){
+	public String getBackgroundImage() {
 		Object[] possibilities = {"Purple Forest", "Boring City", "Cave of "
 				+ "Death", "Desert of Sorrow", "Futuristic", "Fricken "
 						+ "Mushrooms"};
-		String scene = (String)JOptionPane.showInputDialog(null,"Select a scene"
-				+ " pls", "Customized Dialog",
+		String scene = (String) JOptionPane.showInputDialog(this, 
+				"Select a scene pls", "Scene",
 				JOptionPane.PLAIN_MESSAGE, null, possibilities, "Boring City");
 		return scene;
 	}

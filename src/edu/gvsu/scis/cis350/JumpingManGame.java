@@ -72,10 +72,9 @@ public final class JumpingManGame extends JFrame {
 		this.setUpGame();
 		
 		// Set up game window options
-		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setResizable(false);
+		this.setResizable(true);
 	}
 
 
@@ -108,6 +107,9 @@ public final class JumpingManGame extends JFrame {
 		this.getContentPane().add(game);
 		this.getContentPane().add(back);
 		this.getContentPane().add(score);
+		
+		this.setSize(back.getWidth(), back.getHeight() + HEIGHT_TO_ADD);
+		back.requestFocusInWindow();
 	}
 
 
@@ -225,7 +227,6 @@ public final class JumpingManGame extends JFrame {
 		@Override
 		public void keyPressed(final KeyEvent e) {
 			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-
 				if (!scrolling && !gameLost) {
 					resume();
 				} else if (scrolling) {
@@ -255,7 +256,7 @@ public final class JumpingManGame extends JFrame {
 	private class TimerListener implements ActionListener {
 		@Override
 		public void actionPerformed(final ActionEvent e) {
-			if (game.getGameLost() && !gameLost) {
+			if (game != null && game.getGameLost() && !gameLost) {
 				pause();
 				gameLost = true;
 
@@ -280,8 +281,5 @@ public final class JumpingManGame extends JFrame {
 				}
 			}
 		}
-		
-		
-		
 	}
 }

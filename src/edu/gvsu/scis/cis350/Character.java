@@ -56,18 +56,17 @@ public final class Character {
 		String characterSelection = getCharacterImage();
 		String filename = "dinosaur.gif";
 		
-		if(characterSelection == "Child Girl"){
+		if (characterSelection == "Child Girl") {
 			filename = "childgirl.gif";
-		}else if(characterSelection == "Dinosaur"){
+		} else if (characterSelection == "Dinosaur") {
 			filename = "dinosaur.gif";
-		}else if(characterSelection == "Knight"){
+		} else if (characterSelection == "Knight") {
 			filename = "knight.gif";
-		}else if(characterSelection == "SciFi Girl"){
+		} else if (characterSelection == "SciFi Girl") {
 			filename = "scigirl.gif";
 		}
 
-		ImageIcon ii = new ImageIcon(
-				"Graphics/Characters/"+filename);
+		ImageIcon ii = new ImageIcon("Graphics/Characters/" + filename);
 		image = ii.getImage();
 
 		characterHeight = image.getHeight(null);

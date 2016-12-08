@@ -56,7 +56,7 @@ public class Background {
 		// Retrieve background image from file
 		try {
 			image = ImageIO.read(new File(
-					"Graphics/Backgrounds/"+background));
+					"Graphics/Backgrounds/" + background));
 		} catch (Exception e) {
 			System.out.println("Error loading background");
 		}
